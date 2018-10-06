@@ -9,7 +9,7 @@
   </ion-header>
 
 
-  <ion-content>
+  <ion-content padding>
     <ion-list no-lines>
       <div  *ngFor="let p of pages; " >
       <button menuClose *ngIf="p.title != 'Divider' " ion-item  (click)="openPage(p)">
