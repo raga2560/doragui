@@ -55,15 +55,12 @@ export class MyApp {
       { title: 'Divider', component: '' , icon: 'none' },
       { title: 'Wallet ', component: ServerlessWalletPage, icon: 'home' },
       { title: 'Wallet Access ', component: LoginPage, icon: 'home' },
-      { title: 'Terms And Condition', component: LoginPage, icon: 'home' },
-      { title: 'Wallet Help', component: LoginPage, icon: 'home' },
       { title: 'Divider', component: '' , icon: 'none' },
       { title: 'Setup wallet recovery', component: SetupRecoveryPage, icon: 'contact' },
       { title: 'Recover wallet', component: RecoverWalletPage, icon: 'contact' },
       { title: 'Divider', component: '' , icon: 'none' },
-      { title: 'Coupon Server', component: CouponIssuePage, icon: 'contact' },
-      { title: 'Receive payment Web/Mobile', component: CouponRedeemPage, icon: 'contact' },
-/*      { title: 'Payment Issue', component: PaymentIssuePage, icon: 'contact' },
+/*
+      { title: 'Payment Issue', component: PaymentIssuePage, icon: 'contact' },
       { title: 'Client Web/Mobile', component: PaymentAcceptPage, icon: 'contact' },
 */
 
