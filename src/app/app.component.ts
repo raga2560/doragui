@@ -64,7 +64,6 @@ export class MyApp {
       { title: 'Client Web/Mobile', component: PaymentAcceptPage, icon: 'contact' },
 */
 
-
       { title: 'Pay as message', component: ServerlessSendPage, icon: 'contact' },
       { title: 'Receive payment ', component: ServerlessReceivePage, icon: 'contact' },
 
