@@ -1,0 +1,72 @@
+
+<!--
+  Generated template for the DroneLockPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+ <ion-navbar >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  <ion-title>
+    Balances panel
+  </ion-title>
+ </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list  inset padding>
+      <ion-item-divider class="roundedge" >
+            <p> For balance check, select plan </p>
+        </ion-item-divider>
+
+        <ion-item>
+                    <ion-label>Coupon plan </ion-label>
+                    <ion-select [(ngModel)]="plandata.vendoraddress">
+                        <ion-option *ngFor="let todo of availablePlans"
+                        value={{todo.vendoraddress}}
+                        > {{todo.planname}}
+                        </ion-option>
+                    </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label > Income address: {{plandata.vendoraddress}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label > Income address balance: {{plandata.balance.balance}}</ion-label>
+            <button  item-right ion-button class="colorbutton" (click)="getIncomeBalance()">Get balance </button>
+        </ion-item>
+        <ion-item>
+            <ion-label > Fees address: {{ feesdata.address}} </ion-label>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label > Balance of fees = {{ feesdata.balance }}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label > Fees to topup</ion-label>
+            <ion-input type="text"  [(ngModel)]="feesamount" placeholder="Amount to add to fees address "></ion-input>
+            <button  class="colorbutton" item-right ion-button>Topup fees address </button>
+        </ion-item>
+        <ion-item>
+            <ion-label > Charging address: {{chargingdata.address}}  </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label > Balance of charging address: {{chargingdata.balance}} </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label > Charging to topup</ion-label>
+            <ion-input type="text"  [(ngModel)]="chargingamount" placeholder="Amount to charge "></ion-input>
+            <button  class="colorbutton" item-right ion-button>Topup charging address</button>
+        </ion-item>
+        <ion-item>
+        </ion-item>
+   </ion-list>
+
+</ion-content>

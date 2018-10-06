@@ -1,0 +1,55 @@
+<!--
+  Generated template for the DroneLockPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+ <ion-navbar >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  <ion-title>
+    Encash coupon
+  </ion-title>
+ </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list  inset padding>
+        <ion-item-divider class="roundedge" >
+            <p> Unlock coupon, by giving PIN </p>
+        </ion-item-divider>
+
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="coupondata.couponid" placeholder="Coupon id to redeem"></ion-input>
+            <button item-right ion-button (click)="getCoupon()" class="colorbutton" >Retreive coupon </button>
+        </ion-item>
+        <ion-item *ngIf="coupondata.couponaddress">
+            <ion-label > Coupon address: {{coupondata.couponaddress}} </ion-label> 
+        </ion-item>
+        <ion-item>
+            <button item-left ion-button class="colorbutton" (click)="getCouponBalance()">Balance of coupon </button>
+            <button item-right ion-button (click)="validateCoupon()" class="colorbutton" >Check validity of coupon </button>
+        </ion-item>
+        <ion-item>
+            <ion-label > Balance of coupon : {{balance.balance  }} </ion-label> 
+        </ion-item>
+        <ion-item>
+            <ion-label > Unconformed balance of coupon :  {{balance.unconfirmed_balance }} </ion-label> 
+        </ion-item>
+        <ion-item-divider class="roundedge">
+            <p> Enter PIN to redeem below </p>
+        </ion-item-divider>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="redeemdata.couponpin" placeholder="Enter PIN to unlock"></ion-input>
+        </ion-item>
+        <ion-item>
+            <button item-left ion-button class="colorbutton" (click)="redeemCoupon()">Redeem coupon </button>
+
+        </ion-item>
+   </ion-list>
+
+</ion-content>

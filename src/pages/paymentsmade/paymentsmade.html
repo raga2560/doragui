@@ -1,0 +1,37 @@
+<ion-header>
+ <ion-navbar >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  <ion-title>
+    Payments made
+  </ion-title>
+  <ion-buttons end>
+    <button ion-button icon-only (click)="refresh()"><ion-icon name="refresh"></ion-icon></button>
+  </ion-buttons>
+ </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list inset  padding>
+
+    <ion-item-sliding *ngFor="let todo of payments">
+
+      <ion-item>
+       <ion-label text-wrap >Tx: {{todo.paymenttxid}}  
+        <h3>Amount: {{todo.paymentvalue}} </h3>
+        </ion-label> 
+
+
+        <button ion-button item-right class="colorbutton" >
+          Select
+        </button>
+      </ion-item>
+
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>
+

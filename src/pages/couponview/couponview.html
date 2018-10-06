@@ -1,0 +1,47 @@
+<!--
+  Generated template for the ContractCreatedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+ <ion-navbar >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Coupon view page </ion-title>
+ </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+     <div *ngIf="coupon != null">
+<ion-item>
+  Coupon id : <span class="selectable" > {{coupon.couponid}} </span>
+</ion-item>
+<ion-item>
+  Coupon value : {{coupon.couponvalue}}
+</ion-item>
+<ion-item>
+  Coupon pin : {{coupon.couponpin}}
+</ion-item>
+<ion-item>
+  Coupon address : {{coupon.couponaddress}}
+  <button item-right ion-button class="colorbutton" (click)="getBalance()">Check balance </button>
+</ion-item>
+        <ion-item *ngIf="balance != ''">
+           Coupon balance: {{balance.balance}}
+           unconfirmed_n_tx : {{ balance.unconfirmed_n_tx }}
+           unconfirmed_balance : {{ balance.unconfirmed_balance }}
+
+        </ion-item>
+
+
+
+
+     </div>
+
+
+
+</ion-content>
