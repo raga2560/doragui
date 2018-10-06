@@ -15,14 +15,12 @@
             <button ion-button icon-only>
                 <ion-icon name="power"></ion-icon>
             </button>
-
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-
-    <ion-segment [(ngModel)]="relationship" padding>
+    <ion-segment class="padContent" [(ngModel)]="relationship" padding>
         <ion-segment-button class="colorbutton" value="dashcoin">
             DASHCOIN
         </ion-segment-button>
@@ -41,15 +39,15 @@
 
             <ion-card>
                 <ion-input type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
-                <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste address</button>
+                <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste Address</button>
                 <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Send</button>
             </ion-card>
-            <ion-card>
+            <ion-card text-center>
                 <ion-card-title padding>
                     Scan QR-code to send
                 </ion-card-title>
                 <ion-card-content>
-                    <qr-code id="qrcode" [value]="sendqrcode" [size]="200"></qr-code>
+                    <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
             </ion-card>
             <ion-item-divider class="roundedge">
@@ -60,16 +58,14 @@
                     <h2> Address to receive : </h2> <h3> {{addresstoreceive}} </h3>
                 </ion-label>
                 <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
-
-
             </ion-card>
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-card-title padding>
                     Display QR-code to receive
                 </ion-card-title>
                 <ion-card-content>
-                    <qr-code id="qrcode" [value]="sendqrcode" [size]="200"></qr-code>
+                    <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
             </ion-card>
 
@@ -129,12 +125,12 @@
                 <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste address</button>
                 <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Send</button>
             </ion-card>
-            <ion-card>
+            <ion-card  text-center>>
                 <ion-card-title padding>
                     Scan QR-code to send
                 </ion-card-title>
                 <ion-card-content>
-                    <qr-code id="qrcode" [value]="sendqrcode" [size]="200"></qr-code>
+                    <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
             </ion-card>
             <ion-item-divider class="roundedge">
@@ -149,12 +145,12 @@
 
             </ion-card>
 
-            <ion-card>
+            <ion-card  text-center>
                 <ion-card-title padding>
                     Display QR-code to receive
                 </ion-card-title>
                 <ion-card-content>
-                    <qr-code id="qrcode" [value]="sendqrcode" [size]="200"></qr-code>
+                    <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
             </ion-card>
 

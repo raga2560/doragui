@@ -8,9 +8,10 @@
 }
 
 .colorbutton {
-    border-radius: 30px !important;
+    border-radius: 25px !important;
     background-color: map-get($colors, twitter);
     font-size: 0.9em;
+    color: #000;
 }
 
 .navcolor {
@@ -18,5 +19,6 @@
 }
 
 .padContent {
-    padding: 20px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
 }

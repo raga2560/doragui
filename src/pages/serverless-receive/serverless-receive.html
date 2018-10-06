@@ -39,7 +39,7 @@
         </ion-card>
 
         <ion-card *ngIf="serverless" >
-<qr-code *ngIf="serverless.receiveqrcode" id="qrcode" [value]="serverless.receivedqrcode" [size]="200" ></qr-code>
+<qr-code *ngIf="serverless.receiveqrcode" id="qrcode" [value]="serverless.receivedqrcode" [size]="200" [canvas]="true"></qr-code>
             <button item-right ion-button small class="colorbutton" (click)="qrscan()">Scan QR </button>
         </ion-card>
         <ion-card *ngIf="serverless" >
