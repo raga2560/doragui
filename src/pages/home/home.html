@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="primary">
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
@@ -37,20 +37,20 @@
                 Send Bitcoin
             </ion-item-divider>
 
-            <ion-card>
-                <ion-input type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
+            <ion-card color="lightdark">
+                <ion-input color="lightdark" class="roundtext" type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
                 <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste Address</button>
                 <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Send</button>
             </ion-card>
             <ion-card text-center>
-                <ion-card-title padding>
+                <ion-card-title padding class="greyback">
                     Scan QR-code to send
                 </ion-card-title>
                 <ion-card-content>
                     <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
             </ion-card>
-            <ion-item-divider class="roundedge">
+            <ion-item-divider class="roundtext">
                 Receive Bitcoin
             </ion-item-divider>
             <ion-card>
@@ -61,7 +61,7 @@
             </ion-card>
 
             <ion-card text-center>
-                <ion-card-title padding>
+                <ion-card-title padding class="greyback">
                     Display QR-code to receive
                 </ion-card-title>
                 <ion-card-content>

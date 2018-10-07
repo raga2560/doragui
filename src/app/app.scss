@@ -96,7 +96,7 @@ ion-list {
     margin-bottom: 10px;
     background-color: map-get($colors, twitter);
     font-size: 0.9em;
-    color: black;
+    color: white;
 }
 
 .colorbutton {
@@ -110,3 +110,19 @@ ion-list {
     padding-left: 15px !important;
     padding-right: 15px !important;
 }
+
+.roundtext {
+    border-radius:1000000px !important;
+	padding-left: 15px !important;
+    background-color: map-get($colors, light);
+  font-size: 0.9em;
+}
+
+.greyback {
+    
+    background-color: map-get($colors, dark);
+    font-size: 0.9em;
+    color: white;
+	}
+
+
