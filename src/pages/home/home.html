@@ -51,22 +51,23 @@
                 </ion-card-content>
             </ion-card>
             <ion-item-divider class="roundtext">
-                Receive Bitcoin
+                My address to Receive Bitcoin
             </ion-item-divider>
             <ion-card>
                 <ion-label text-wrap>
-                    <h2> Address to receive : </h2> <h3> {{addresstoreceive}} </h3>
+                 {{addresstoreceive}} 
                 </ion-label>
                 <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
             </ion-card>
 
             <ion-card text-center>
                 <ion-card-title padding class="greyback">
-                    Display QR-code to receive
+                    My QR-code to receive
                 </ion-card-title>
                 <ion-card-content>
                     <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
+                <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
             </ion-card>
 
 
@@ -134,11 +135,11 @@
                 </ion-card-content>
             </ion-card>
             <ion-item-divider class="roundedge">
-                Receive Dashcoin
+                My address to Receive Dashcoin
             </ion-item-divider>
             <ion-card>
                 <ion-label text-wrap>
-                    <h2> Address to receive : </h2> <h3> {{addresstoreceive}} </h3>
+                     {{addresstoreceive}} 
                 </ion-label>
                 <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
 
@@ -147,11 +148,12 @@
 
             <ion-card  text-center>
                 <ion-card-title padding>
-                    Display QR-code to receive
+                    My QR-code to receive
                 </ion-card-title>
                 <ion-card-content>
                     <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
+                <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
             </ion-card>
 
 

@@ -48,25 +48,7 @@
             </ion-item>
 
 
-            <ion-item>
-                <button class="colorbutton" item-right ion-button> Save wallet</button>
-                <button class="colorbutton" item-right ion-button> Restore wallet</button>
-            </ion-item>
-            <ion-item-divider class="roundedge">
-                <p> External Dashcoin wallet setting </p>
-            </ion-item-divider>
 
-            <ion-card>
-                <ion-input type="text" [(ngModel)]="externalwallet.sendaddress"
-                           placeholder="External wallet address "></ion-input>
-                <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Save</button>
-            </ion-card>
-            <ion-card>
-                <ion-input type="text" [(ngModel)]="externalwallet.sendamount"
-                           placeholder="Amount to send external      "></ion-input>
-                <button item-right ion-button small (click)="sendexternalamount()" class="colorbutton">Send external
-                </button>
-            </ion-card>
         </ion-list>
     </div>
     <div class="padContent" [ngSwitch]="relationship">
@@ -93,25 +75,6 @@
             </ion-item>
 
 
-            <ion-item>
-                <button class="colorbutton" item-right ion-button> Save wallet</button>
-                <button class="colorbutton" item-right ion-button> Restore wallet</button>
-            </ion-item>
-            <ion-item-divider class="roundedge">
-                 External Bitcoin wallet setting
-            </ion-item-divider>
-
-            <ion-card>
-                <ion-input type="text" [(ngModel)]="externalwallet.sendaddress"
-                           placeholder="External wallet address "></ion-input>
-                <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Save</button>
-            </ion-card>
-            <ion-card>
-                <ion-input type="text" [(ngModel)]="externalwallet.sendamount"
-                           placeholder="Amount to send external      "></ion-input>
-                <button item-right ion-button small (click)="sendexternalamount()" class="colorbutton">Send external
-                </button>
-            </ion-card>
         </ion-list>
     </div>
 
