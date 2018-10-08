@@ -47,13 +47,20 @@ export class HomePage {
 
  this.paymentService.getPaymentsMade().then((data) => {
 //         alert(JSON.stringify(data));
+
+		if(data == null) 
+                  this.sentTransactions = '';
+                else 
                   this.sentTransactions = data;
+
     }, (err) => {
         console.log("not allowed");
     });
 
  this.paymentService.getPaymentsReceived().then((data) => {
-         // alert(JSON.stringify(data));
+		if(data == null) 
+                  this.receivedTransactions = '';
+		else
                   this.receivedTransactions = data;
     }, (err) => {
         console.log("not allowed");

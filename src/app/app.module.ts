@@ -91,7 +91,11 @@ import { CouponviewPageModule } from '../pages/couponview/couponview.module';
     IonicModule.forRoot(MyApp, {
       mode: 'ios'}
       ),
-    IonicStorageModule.forRoot()
+IonicStorageModule.forRoot({
+      name: '__mydb',
+         driverOrder: ['sqlite', 'indexeddb',  'websql']
+    })
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
