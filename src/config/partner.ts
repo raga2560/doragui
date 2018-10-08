@@ -3,28 +3,28 @@ export const partner = {
         "partneraddress":"mfhfG8BiHjMzmJoyeXavTUmSUxRAdpQ7Ce",
         "partnerid": "",
         "schemeid": "",
-        "fees": "1000",
+        "fees": "10000",
         "partnershare": ""
         },
         "validator": {
         "partneraddress":"mfhfG8BiHjMzmJoyeXavTUmSUxRAdpQ7Ce",
         "partnerid": "",
         "schemeid": "",
-        "fees": "1000",
+        "fees": "10000",
         "partnershare": ""
         },
         "sender": {
         "partneraddress":"mfhfG8BiHjMzmJoyeXavTUmSUxRAdpQ7Ce",
         "partnerid": "",
         "schemeid": "",
-        "fees": "1000",
+        "fees": "10000",
         "partnershare": ""
         },
         "receiver": {
         "partneraddress":"mfhfG8BiHjMzmJoyeXavTUmSUxRAdpQ7Ce",
         "partnerid": "",
         "schemeid": "",
-        "fees": "1000",
+        "fees": "10000",
         "partnershare": ""
         }
 
