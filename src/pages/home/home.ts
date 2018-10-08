@@ -4,6 +4,7 @@ import { Todos } from '../../providers/todos';
 import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login-page/login-page';
 import { ServerlessSendviewPage } from '../serverless-sendview/serverless-sendview';
+import { ServerlessReceiveviewPage } from '../serverless-receiveview/serverless-receiveview';
 import { ServerlessPayment } from '../../providers/serverlesspayment';
 import { ServerlessWallet } from '../../providers/serverlesswallet';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
@@ -67,11 +68,17 @@ export class HomePage {
    this.paymentService.clearPaymentsMade();
   }
   
-  viewpayment(payment) {
+  viewpaymentmade(payment) {
 
     this.navCtrl.push('ServerlessSendviewPage', {payment: payment});
 
   }
+  viewpaymentreceived(payment) {
+
+    this.navCtrl.push('ServerlessReceiveviewPage', {payment: payment});
+
+  }
+
 
   loadTodos(){
 

@@ -19,10 +19,10 @@ declare var foo;
 
 @IonicPage()
 @Component({
-  selector: 'page-serverless-sendview',
-  templateUrl: 'serverless-sendview.html',
+  selector: 'page-serverless-receiveview',
+  templateUrl: 'serverless-receiveview.html',
 })
-export class ServerlessSendviewPage {
+export class ServerlessReceiveviewPage {
 
 
   payments: any;

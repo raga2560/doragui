@@ -72,7 +72,7 @@
 
 
             <ion-item-divider>
-                <p> Latest 5 transactions </p>
+                <p> Latest 3 sent transactions </p>
             </ion-item-divider>
 
             <div *ngIf="sentTransactions != ''">
@@ -82,7 +82,7 @@
                             <h3>Amount: {{todo.paymentvalue}} </h3>
                             <h3>To: {{todo.paymentaddress}} </h3>
                         </ion-label>
-                        <button item-right ion-button class="colorbutton" (click)="viewpayment(todo)">view</button>
+                        <button item-right ion-button class="colorbutton" (click)="viewpaymentmade(todo)">view</button>
 
                     </ion-item>
 
@@ -91,6 +91,9 @@
             <ion-item *ngIf="sentTransactions == ''">
                 <p> No sent transactions </p>
             </ion-item>
+            <ion-item-divider>
+                <p> Latest 3 received transactions </p>
+            </ion-item-divider>
             <div *ngIf="receivedTransactions != ''">
                 <ion-item-sliding *ngFor="let todo of receivedTransactions; let i = index">
 
@@ -99,6 +102,7 @@
                             <h3>From: {{todo.paymentaddress}} </h3>
                             <h3>Total: {{todo.paymentvalue}} </h3>
                         </ion-label>
+                        <button item-right ion-button class="colorbutton" (click)="viewpaymentreceived(todo)">view</button>
 
                     </ion-item>
 
@@ -158,7 +162,7 @@
 
 
             <ion-item-divider>
-                Latest 5 transactions
+                Latest 3 sent transactions
             </ion-item-divider>
 
             <div *ngIf="sentTransactions != ''">
@@ -169,7 +173,7 @@
                             <h3>Amount: {{todo.paymentvalue}} </h3>
                             <h3>To: {{todo.paymentaddress}} </h3>
                         </ion-label>
-                        <button item-right ion-button class="colorbutton" (click)="viewpayment(todo)">view</button>
+                        <button item-right ion-button class="colorbutton" (click)="viewpaymentmade(todo)">view</button>
 
                     </ion-item>
 
@@ -186,11 +190,15 @@
                             <h3>From: {{todo.paymentaddress}} </h3>
                             <h3>Total: {{todo.paymentvalue}} </h3>
                         </ion-label>
+                        <button item-right ion-button class="colorbutton" (click)="viewpaymentreceived(todo)">view</button>
 
                     </ion-item>
 
                 </ion-item-sliding>
             </div>
+            <ion-item-divider>
+                Latest 3 received transactions
+            </ion-item-divider>
             <ion-item *ngIf="receivedTransactions == ''">
                 <p> No received transactions </p>
             </ion-item>

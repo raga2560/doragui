@@ -10,7 +10,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
   <ion-title>
-    Paid as message
+    Received as message
   </ion-title>
  </ion-navbar>
 </ion-header>
@@ -20,11 +20,11 @@
 
   <ion-list  inset padding *ngIf="paymentdata" >
         <ion-item-divider class="roundedge" >
-            <p> Sent money   </p>
+            <p> Received money   </p>
         </ion-item-divider>
 
         <ion-card>
-            <ion-label > Sent: {{paymentdata.paymentvalue}} </ion-label>
+            <ion-label > Received: {{paymentdata.paymentvalue}} </ion-label>
         </ion-card>
 
         <ion-card>
@@ -32,11 +32,11 @@
             <button item-right ion-button small class="colorbutton" (click)="getPaymentBalance()">Revert payment </button>
         </ion-card>
         <ion-card>
-            <ion-label text-wrap> Sent transaction-id : {{paymentdata.paymenttxid}} </ion-label> 
+            <ion-label text-wrap> Received transaction-id : {{paymentdata.paymenttxid}} </ion-label> 
         </ion-card>
 <ion-card text-center>
             <ion-card-title padding class="greyback">
-                Sent Payment Message
+                Received Payment Message
             </ion-card-title>
             <ion-card-content text-center>
                 <p>
@@ -47,7 +47,7 @@
 </ion-card>
 <ion-card text-center>
             <ion-card-title padding class="greyback">
-                PIN given for Receiver
+                PIN given by sender
             </ion-card-title>
             <ion-card-content text-center>
                 {{paymentdata.paymentpin}}
