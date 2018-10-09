@@ -33,25 +33,13 @@
             </ion-item-divider>
 
             <ion-card>
-                <ion-label>Dashcoin Wallet Address :
+                <ion-label>Dashcoin Wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
-                <button item-right ion-button small class="colorbutton" (click)="copyaddr()">Copy</button>
             </ion-card>
 
-            <ion-card>
-                <ion-label> Dashcoin Wallet Balance: {{walletbalance.balance}}</ion-label>
-                <button item-right ion-button small class="colorbutton" (click)="getWalletBalance()">Get Balance
-                </button>
-            </ion-card>
-            <ion-item>
-                <ion-label> Unconfirmed Balance : {{walletbalance.unconfirmed_balance }}</ion-label>
-            </ion-item>
 
-            <ion-item>
-                <button class="colorbutton" item-right ion-button> Test Stored Wallet Data</button>
-                <button class="colorbutton" item-right ion-button> Restore Wallet</button>
-            </ion-item>
+
         </ion-list>
     </div>
     <div class="padContent" [ngSwitch]="relationship">
@@ -60,31 +48,25 @@
                 Bitcoin Wallet
             </ion-item-divider>
 
+
             <ion-card>
-                <ion-label>Bitcoin Wallet Address :
+                <ion-label>Bitcoin Wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
-                <button item-right ion-button small class="colorbutton" (click)="copyaddr()">Copy</button>
             </ion-card>
 
-            <ion-card>
-                <ion-label> Bitcoin Wallet Balance: {{walletbalance.balance}}</ion-label>
-                <button item-right ion-button small class="colorbutton" (click)="getWalletBalance()">Get Balance
-                </button>
-            </ion-card>
-            <ion-item>
-                <ion-label> Unconfirmed Balance : {{walletbalance.unconfirmed_balance }}</ion-label>
-            </ion-item>
-
-            <ion-item>
-                <button class="colorbutton" item-right ion-button> Save Wallet</button>
-                <button class="colorbutton" item-right ion-button> Restore Wallet</button>
-            </ion-item>
         </ion-list>
     </div>
 
 
-    <ion-list no-lines>
+
+    <ion-list class="padContent">
+ <ion-item-divider class="roundedge">
+                Wallet recovery
+            </ion-item-divider>
+            <ion-item>
+                <button class="colorbutton" item-right ion-button> Download Recovery Data </button>
+            </ion-item>
         <!--ion-item>
             <ion-label > Select fees = {{ serverless.fees }}</ion-label>
                     <ion-select [(ngModel)]="serverless.fees">
@@ -93,5 +75,8 @@
                         > {{todo.levelname}}
                         </ion-option>
         </ion-item -->
+
+
     </ion-list>
+
 </ion-content>
