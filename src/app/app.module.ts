@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Clipboard } from '@ionic-native/clipboard';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
+
 
 import { QRCodeModule } from 'angular2-qrcode';
 import { MyApp } from './app.component';
@@ -112,6 +115,8 @@ IonicStorageModule.forRoot({
     Planmanager, 
     Coupon, 
     Serverless, 
+    File,
+    FileOpener,
     Bitcoin, 
     Payment, 
     ServerlessPayment, 

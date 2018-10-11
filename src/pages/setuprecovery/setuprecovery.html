@@ -65,8 +65,10 @@
                 Wallet recovery
             </ion-item-divider>
             <ion-item>
-                <button class="colorbutton" item-right ion-button> Download Recovery Data </button>
+                <button (click)="createPdf()" class="colorbutton" item-right ion-button> Create Recovery Data </button>
+                <button (click)="downloadPdf()" [disabled]="!pdfObj" class="colorbutton" item-right ion-button> Download Recovery Data </button>
             </ion-item>
+
         <!--ion-item>
             <ion-label > Select fees = {{ serverless.fees }}</ion-label>
                     <ion-select [(ngModel)]="serverless.fees">
