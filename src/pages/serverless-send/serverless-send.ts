@@ -8,6 +8,12 @@ import { Bitcoin } from '../../providers/bitcoin';
 import {QRCodeComponent} from 'angular2-qrcode';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Clipboard } from '@ionic-native/clipboard';
+import { environment } from '../../config/environment';
+  
+let url = environment.url;
+let bitcoinMinimumSend = environment.bitcoinMinimumSend;
+let bitcoinMinimumReceive = environment.bitcoinMinimumReceive;
+
 
 /**
  * Generated class for the PaymentAcceptPage page.
@@ -251,6 +257,11 @@ let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
     if(this.serverless.sendamount > this.walletbalance.balance)
     {
         alert("No sufficient balance in wallet="+this.walletbalance.address);
+	return ;
+    }
+    if(this.serverless.sendamount < bitcoinMinimumSend )
+    {
+        alert("Minimum amount to send = "+bitcoinMinimumSend );
 	return ;
     }
 

@@ -11,6 +11,7 @@ import * as pdfFonts from '../../assets/js/pdfmake/vfs_fonts';
 import {  ToastController } from 'ionic-angular';
 
 import { ServerlessWallet } from '../../providers/serverlesswallet';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 /**
  * Generated class for the BalancesPage page.
@@ -333,7 +334,6 @@ var recoverydata = {
   }
 ;
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 this.pdfObj = pdfMake.createPdf(docDefinition);
 
 
@@ -341,6 +341,7 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
 }
 
 downloadPdf() {
+
     if (this.plt.is('cordova')) {
       this.pdfObj.getBuffer((buffer) => {
         var blob = new Blob([buffer], { type: 'application/pdf' });
@@ -355,6 +356,8 @@ downloadPdf() {
       // On a browser simply use download!
       this.pdfObj.download("WalletRec.pdf");
     }
+ 
+
   }
 
   

@@ -7,6 +7,12 @@ import { partner } from '../config/partner';
 import { contract } from '../config/contract';
 import { ServerlessWallet } from './serverlesswallet';
 
+import { environment } from '../config/environment';
+
+let url = environment.url;
+let bitcoinMinimumSend = environment.bitcoinMinimumSend;
+let bitcoinMinimumReceive = environment.bitcoinMinimumReceive;
+
 declare var foo;
 
 let partnerinfo = partner;

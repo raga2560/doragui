@@ -8,6 +8,8 @@ import { Storage } from '@ionic/storage';
 import { environment } from '../config/environment';
 
 let url = environment.url;
+let bitcoinMinimumSend = environment.bitcoinMinimumSend;
+let bitcoinMinimumReceive = environment.bitcoinMinimumReceive;
 
 @Injectable()
 export class ServerlessPayment {

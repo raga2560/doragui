@@ -37,7 +37,7 @@
             <button item-right ion-button small class="colorbutton" (click)="qrscan()">Scan QR</button>
         </ion-card>
         <ion-card *ngIf="serverless" text-center>
-            <ion-textarea type="text" [(ngModel)]="serverless.receivedstring"
+            <ion-textarea rows="8" text-wrap type="text" [(ngModel)]="serverless.receivedstring"
                           placeholder="Enter received string"></ion-textarea>
             <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste String</button>
         </ion-card>
@@ -51,7 +51,7 @@
             <ion-label> Transacted Amount: {{serverless.receivedamount}}</ion-label>
             <button item-right ion-button small (click)="receiveFund()" class="colorbutton">Receive Fund</button>
         </ion-card>
-        <ion-item *ngIf="errordata.receivedmessage != ''" color="danger">
+        <ion-item text-wrap *ngIf="errordata.receivedmessage != ''" color="danger">
             {{errordata.receivedmessage}}
         </ion-item>
 

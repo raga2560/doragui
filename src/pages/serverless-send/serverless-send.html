@@ -39,7 +39,7 @@
             <ion-input type="text" [(ngModel)]="serverless.sendamount" placeholder="Amount to send      "></ion-input>
             <button item-right ion-button small (click)="prepareToSend()" class="colorbutton">Prepare to send</button>
         </ion-card>
-        <ion-item *ngIf="errordata.preparingmessage != ''" color="danger">
+        <ion-item text-wrap *ngIf="errordata.preparingmessage != ''" color="danger">
             {{errordata.preparingmessage}}
         </ion-item>
 
