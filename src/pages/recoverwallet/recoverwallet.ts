@@ -26,6 +26,7 @@ export class RecoverWalletPage {
   plans: any;
   feesdata: any;
   walletbalance: any;
+  recoverydata: any;
   externalwallet: any;
   wallet: any;
 
@@ -57,6 +58,7 @@ export class RecoverWalletPage {
 
        };
 
+       this.recoverydata = '';
        this.feeslevel = [
 	 {levelname: "low", levelfees: 20},
 	 {levelname: "medium", levelfees: 30},
@@ -110,6 +112,12 @@ export class RecoverWalletPage {
          return;
        }
        this.serverlessWallet.setExternalBitcoinWallet(this.externalwallet);
+  }
+
+  recoverWallet() {
+
+	alert(this.recoverydata);
+
   }
 
   sendexternalamount() {

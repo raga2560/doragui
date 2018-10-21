@@ -37,15 +37,14 @@
                 Send Bitcoin
             </ion-item-divider>
 
-            <ion-card >
+            <ion-card text-center >
                 <ion-input   type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
                 <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste Address</button>
                 <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Send</button>
             </ion-card>
             <ion-card text-center>
                 <ion-card-title padding >
-                    Scan QR-code to send
-                <button item-right ion-button small (click)="scan()" class="colorbutton">SCAN</button>
+                <button ion-button small (click)="scan()" class="colorbutton">Scan QR-CODE to send</button>
                 </ion-card-title>
                 <ion-card-content *ngIf="sendqrcode != ''">
                     <qr-code id="qrcode" [(value)]="sendqrcode" [canvas]="true"></qr-code>
@@ -55,7 +54,7 @@
             <ion-item-divider class="roundedge">
                 My address to Receive Bitcoin
             </ion-item-divider>
-            <ion-card>
+            <ion-card text-center>
                 <ion-label text-wrap>
                  {{walletbalance.address}} 
                 </ion-label>
@@ -127,25 +126,25 @@
                 Send Dashcoin
             </ion-item-divider>
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-input type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
                 <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste address</button>
                 <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Send</button>
             </ion-card>
             <ion-card  text-center>>
                 <ion-card-title padding>
-                    Scan QR-code to send
+                <button ion-button small (click)="scan()" class="colorbutton">Scan QR-CODE to send</button>
                 </ion-card-title>
-                <ion-card-content>
+                <ion-card-content *ngIf="sendqrcode != ''">
                     <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
             </ion-card>
             <ion-item-divider class="roundedge">
                 My address to Receive Dashcoin
             </ion-item-divider>
-            <ion-card>
+            <ion-card text-center>
                 <ion-label text-wrap>
-                     {{addresstoreceive}} 
+                 {{walletbalance.address}} 
                 </ion-label>
                 <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
 

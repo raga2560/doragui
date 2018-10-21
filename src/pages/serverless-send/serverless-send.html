@@ -28,14 +28,14 @@
 
             </ion-label>
         </ion-item>
-        <ion-card>
+        <ion-card text-center>
             <ion-label text-wrap>
                 <h2> Wallet Address: </h2> <h3> {{walletbalance.address}} </h3>
             </ion-label>
             <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
 
         </ion-card>
-        <ion-card>
+        <ion-card text-center>
             <ion-input type="text" [(ngModel)]="serverless.sendamount" placeholder="Amount to send      "></ion-input>
             <button item-right ion-button small (click)="prepareToSend()" class="colorbutton">Prepare to send</button>
         </ion-card>

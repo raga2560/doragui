@@ -32,12 +32,12 @@
                 Dashcoin Wallet
             </ion-item-divider>
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-label>Current Dashcoin Wallet Address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
             </ion-card>
-            <ion-card>
+            <ion-card text-center>
                 <ion-label>After Recovery Dashcoin Wallet Address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
@@ -51,16 +51,17 @@
                 Bitcoin Wallet
             </ion-item-divider>
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-label>Current Bitcoin Wallet Address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
             </ion-card>
-            <ion-card>
+            <ion-card text-center>
                 <ion-label>After Recovery Bitcoin Wallet Address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
             </ion-card>
+
 
 
         </ion-list>
@@ -70,11 +71,15 @@
  <ion-item-divider class="roundedge">
                 Wallet recovery
             </ion-item-divider>
-            <ion-item>
-                <button class="colorbutton" item-right ion-button> Upload Recovery PDF </button>
-                <button class="colorbutton" item-right ion-button> Test Recovery PDF </button>
-                <button class="colorbutton" item-right ion-button> Confirm Wallet Change </button>
-            </ion-item>
+            <ion-card>
+ <ion-textarea rows="8" text-wrap type="text" [(ngModel)]="recoverydata">
+ </ion-textarea>
+            </ion-card>
+            <ion-card>
+                <button class="colorbutton" item-right ion-button (click)="recoverWallet()" > Recover </button>
+                <button class="colorbutton" item-right ion-button (click)="testrecoverdata()" > Test Recovery Data </button>
+                <button class="colorbutton" item-right ion-button (click)="confirmchange()"> Confirm Wallet Change </button>
+            </ion-card>
 
     </ion-list>
 
