@@ -7,6 +7,7 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
+import {EmailComposer} from '@ionic-native/email-composer';
 
 
 import { QRCodeModule } from 'angular2-qrcode';
@@ -125,6 +126,7 @@ IonicStorageModule.forRoot({
     Popservice, 
     SocialSharing,
     Clipboard,
+    EmailComposer,
     QRScanner,
     Auth,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

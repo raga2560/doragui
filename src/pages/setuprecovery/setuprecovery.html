@@ -66,8 +66,13 @@
             </ion-item-divider>
             <ion-item>
                 <button (click)="createPdf()" class="colorbutton" item-right ion-button> Create Recovery Data </button>
+                <span *ngIf="!(pdfurl == '')"> <a href={{pdfurl}}  class="colorbutton" item-right ion-button> PDF url </a> </span>
                 <button (click)="downloadPdf()" [disabled]="!pdfObj" class="colorbutton" item-right ion-button> Download Recovery Data </button>
             </ion-item>
+            <ion-item>
+                <button (click)="sendEmail()" [disabled]="!pdfObj" class="colorbutton" item-right ion-button> Send email </button>
+            </ion-item>
+
 
         <!--ion-item>
             <ion-label > Select fees = {{ serverless.fees }}</ion-label>

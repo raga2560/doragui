@@ -9,6 +9,8 @@ import { ServerlessPayment } from '../../providers/serverlesspayment';
 import { ServerlessWallet } from '../../providers/serverlesswallet';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {QRCodeComponent} from 'angular2-qrcode';
+import { Bitcoin } from '../../providers/bitcoin';
+
 
 
 
@@ -23,8 +25,12 @@ export class HomePage {
   relationship = 'bitcoin';
   refreshEnable : any;
   sentTransactions: any;
+  scanSub : any;
   sendaddress= '';
+  walletbalance: any;
   sendqrcode= '';
+  wallet: any;
+  receiveqrcode= '';
   addresstoreceive='';
   receivedTransactions: any; 
  @ViewChild(QRCodeComponent) qrcode: QRCodeComponent;
@@ -32,6 +38,9 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public todoService: Todos, public modalCtrl: ModalController, 
     public paymentService: ServerlessPayment,
+  // public serverlessService: Serverless,
+    public serverlessWallet: ServerlessWallet,
+    public bitcoinService: Bitcoin,
     public walletService: ServerlessWallet,
      private qrScanner: QRScanner,
     public alertCtrl: AlertController, public authService: Auth, public loadingCtrl: LoadingController) {
@@ -39,8 +48,23 @@ export class HomePage {
   this.refreshEnable = true;
   this.sentTransactions = '';
   this.receivedTransactions = '';
-  this.walletService.initializeBitcoinWallet();
+  this.walletbalance = {
+            address: '',
+            balance: '',
+            unconfirmed_balance: ''
+       };
+  this.walletService.initializeBitcoinWallet().then(a=>{
+
+  this.wallet = this.serverlessWallet.getBitcoinWallet();
+  this.receiveqrcode= this.wallet.walletkeyaddress;
+  this.getWalletBalance();
+
+  });
   this.walletService.initializeDashcoinWallet();
+  
+
+
+
   }
 
   ionViewDidLoad(){
@@ -69,6 +93,23 @@ export class HomePage {
 
   }
   
+  getWalletBalance(){
+
+    this.showLoader();
+
+    this.bitcoinService.getBalances(this.wallet.walletkeyaddress).then((result) => {
+
+      this.loading.dismiss();
+      this.walletbalance = result;
+
+
+    }, (err) => {
+      this.loading.dismiss();
+        console.log("not allowed");
+    });
+  }
+
+
   clear () {
 
    this.paymentService.clearPaymentsReceived();
@@ -154,6 +195,31 @@ export class HomePage {
       this.loading.dismiss();
     	console.log("not allowed");
     });
+  }
+
+  scan () {
+    this.qrScanner.prepare()
+    .then((status: QRScannerStatus) => {
+      if (status.authorized) {
+        console.log('Camera Permission Given');
+         this.scanSub = this.qrScanner.scan().subscribe((text: string) => {
+         console.log('Scanned something', text);
+         this.sendqrcode = text;
+         alert('Scanned something:'+ text);
+         this.qrScanner.hide();
+         this.scanSub.unsubscribe(); 
+        
+        });
+
+        this.qrScanner.show();
+      } else if (status.denied) {
+        console.log('Camera permission denied');
+      } else {
+        console.log('Permission denied for this runtime.');
+      }
+    })
+    .catch((e: any) => console.log('Error is', e));
+
   }
 
   showLoader(){

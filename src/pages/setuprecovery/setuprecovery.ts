@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, Platform, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { Planmanager } from '../../providers/planmanager';
+import {EmailComposer} from '@ionic-native/email-composer';
 import { Coupon } from '../../providers/coupon';
 import { Bitcoin } from '../../providers/bitcoin';
 import { Clipboard } from '@ionic-native/clipboard';
@@ -34,6 +35,7 @@ export class SetupRecoveryPage {
   walletbalance: any;
   externalwallet: any;
   wallet: any;
+  pdfurl='';
 
   chargingdata: any;
   chargingamount : any;
@@ -49,6 +51,7 @@ export class SetupRecoveryPage {
   constructor(public navCtrl: NavController, 
               public planService: Planmanager,
               public couponService: Coupon,
+	      private emailComposer: EmailComposer,
               private clipboard: Clipboard,
               private plt: Platform,
               public bitcoinService: Bitcoin,
@@ -336,6 +339,16 @@ var recoverydata = {
 
 this.pdfObj = pdfMake.createPdf(docDefinition);
 
+/*
+alert("open");
+this.pdfObj.open();
+alert("print");
+
+this.pdfObj.print();
+*/
+this.pdfObj.getDataUrl((dataUrl) => {
+    this.pdfurl = dataUrl;
+});
 
 
 }
@@ -346,11 +359,19 @@ downloadPdf() {
       this.pdfObj.getBuffer((buffer) => {
         var blob = new Blob([buffer], { type: 'application/pdf' });
  
+	console.log("data dir="+ this.file.dataDirectory);
+	alert("before write data dir="+ this.file.dataDirectory);
         // Save the PDF to the data Directory of our App
         this.file.writeFile(this.file.dataDirectory, 'WalletRec.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
+	alert("after write data dir="+ this.file.dataDirectory);
           this.fileOpener.open(this.file.dataDirectory + 'WalletRec.pdf', 'application/pdf');
         })
+     .catch((err) => {
+       alert(err);
+       console.error(err);
+     });
+
       });
     } else {
       // On a browser simply use download!
@@ -359,6 +380,40 @@ downloadPdf() {
  
 
   }
+
+  sendEmail() {
+    if (this.plt.is('cordova')) {
+      this.pdfObj.getBuffer((buffer) => {
+        var blob = new Blob([buffer], { type: 'application/pdf' });
+ 
+	console.log("data dir="+ this.file.dataDirectory);
+	alert("before write data dir="+ this.file.dataDirectory);
+        // Save the PDF to the data Directory of our App
+        this.file.writeFile(this.file.dataDirectory, 'WalletRec.pdf', blob, { replace: true }).then(fileEntry => {
+          // Open the PDf with the correct OS tools
+	alert("after write data dir="+ this.file.dataDirectory);
+       let email = {
+         to: 'email@email',
+         attachments: [
+           this.file.dataDirectory + 'WalletRec.pdf'
+         ],
+
+         subject: 'subject',
+         body: 'body text...',
+         isHtml: true
+       };
+       this.emailComposer.open(email);
+
+
+     })
+     .catch((err) => {
+       alert(err);
+       console.error(err);
+     });
+
+ });
+}
+}
 
   
 }

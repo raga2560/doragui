@@ -39,6 +39,7 @@ export class ServerlessWallet {
 
  var network = foo.bitcoin.networks.testnet;
           
+  return new Promise((resolve, reject) => {
 
 
 
@@ -52,13 +53,19 @@ export class ServerlessWallet {
         };
         this.storage.set('bitcoinwallet', dat);
         this.bitcoinwallet = dat;
+        resolve (this.bitcoinwallet);
       }
         else {
         this.bitcoinwallet = data;
+        resolve (this.bitcoinwallet);
         }
 
+  }, err => {
+	reject(err);
   });
 
+
+});
   }
 
   loadexternalbitcoinwallet() {

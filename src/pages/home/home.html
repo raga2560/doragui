@@ -37,41 +37,43 @@
                 Send Bitcoin
             </ion-item-divider>
 
-            <ion-card color="lightdark">
-                <ion-input color="lightdark" class="roundtext" type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
+            <ion-card >
+                <ion-input   type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
                 <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste Address</button>
                 <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Send</button>
             </ion-card>
             <ion-card text-center>
-                <ion-card-title padding class="greyback">
+                <ion-card-title padding >
                     Scan QR-code to send
+                <button item-right ion-button small (click)="scan()" class="colorbutton">SCAN</button>
                 </ion-card-title>
-                <ion-card-content>
-                    <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
+                <ion-card-content *ngIf="sendqrcode != ''">
+                    <qr-code id="qrcode" [(value)]="sendqrcode" [canvas]="true"></qr-code>
+ {{sendqrcode}}
                 </ion-card-content>
             </ion-card>
-            <ion-item-divider class="roundtext">
+            <ion-item-divider class="roundedge">
                 My address to Receive Bitcoin
             </ion-item-divider>
             <ion-card>
                 <ion-label text-wrap>
-                 {{addresstoreceive}} 
+                 {{walletbalance.address}} 
                 </ion-label>
                 <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
             </ion-card>
 
             <ion-card text-center>
-                <ion-card-title padding class="greyback">
+                <ion-card-title padding >
                     My QR-code to receive
                 </ion-card-title>
                 <ion-card-content>
-                    <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
+                    <qr-code id="qrcode" [value]="receiveqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
                 <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
             </ion-card>
 
 
-            <ion-item-divider>
+            <ion-item-divider class="roundedge">
                 <p> Latest 3 sent transactions </p>
             </ion-item-divider>
 
@@ -91,7 +93,7 @@
             <ion-item *ngIf="sentTransactions == ''">
                 <p> No sent transactions </p>
             </ion-item>
-            <ion-item-divider>
+            <ion-item-divider class="roundedge">
                 <p> Latest 3 received transactions </p>
             </ion-item-divider>
             <div *ngIf="receivedTransactions != ''">
@@ -161,7 +163,7 @@
             </ion-card>
 
 
-            <ion-item-divider>
+            <ion-item-divider class="roundedge">
                 Latest 3 sent transactions
             </ion-item-divider>
 
@@ -196,7 +198,7 @@
 
                 </ion-item-sliding>
             </div>
-            <ion-item-divider>
+            <ion-item-divider class="roundedge">
                 Latest 3 received transactions
             </ion-item-divider>
             <ion-item *ngIf="receivedTransactions == ''">
