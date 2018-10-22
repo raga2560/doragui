@@ -25,6 +25,7 @@ export class RecoverWalletPage {
   feesdata: any;
   walletbalance: any;
   recoverydata: any;
+  recoveredaddress: any;
   externalwallet: any;
   wallet: any;
 
@@ -54,6 +55,7 @@ export class RecoverWalletPage {
 
        };
 
+       this.recoveredaddress = '';
        this.recoverydata = '';
        this.feeslevel = [
 	 {levelname: "low", levelfees: 20},
@@ -110,9 +112,25 @@ export class RecoverWalletPage {
        this.serverlessWallet.setExternalBitcoinWallet(this.externalwallet);
   }
 
-  recoverWallet() {
+  recoverTheWallet() {
 
-	alert(this.recoverydata);
+        if(this.recoverypassword.length < 5)
+        {
+	alert("Enter recovery password");
+	return;
+        }
+	var rec = JSON.parse(this.recoverydata);
+   
+
+ var promise = this.serverlessWallet.getDecrypedBitcoinWallet(rec, this.recoverypassword);
+   promise.then(data=>{
+	this.recoveredaddress = data.walletaddress;	
+   }, err=> {
+	alert("failed to recover");	
+   });
+
+
+
 
   }
 

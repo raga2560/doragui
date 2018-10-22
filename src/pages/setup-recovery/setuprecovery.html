@@ -32,7 +32,7 @@
                 Dashcoin Wallet
             </ion-item-divider>
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-label>Dashcoin Wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
@@ -49,7 +49,7 @@
             </ion-item-divider>
 
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-label>Bitcoin Wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
@@ -64,10 +64,12 @@
  <ion-item-divider class="roundedge">
                 Create wallet recovery
             </ion-item-divider>
-            <ion-item>
+  <ion-card text-center >
+                <ion-input   type="text" [(ngModel)]="walletpassword" placeholder="Enter wallet password "></ion-input>
                 <button (click)="createPdf()" class="colorbutton" item-right ion-button> Generate recovery data </button>
-                <span *ngIf="!(pdfurl == '')"> <a href={{pdfurl}}  class="colorbutton" item-right ion-button> PDF url </a> </span>
-            </ion-item>
+            </ion-card>
+
+
  <ion-item-divider class="roundedge">
                 Wallet recovery data
             </ion-item-divider>

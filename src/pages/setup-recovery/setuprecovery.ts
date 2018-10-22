@@ -32,6 +32,7 @@ export class SetupRecoveryPage {
   feesdata: any;
   walletbalance: any;
   externalwallet: any;
+  walletpassword: string;
   wallet: any;
   pdfurl='';
 
@@ -64,6 +65,7 @@ export class SetupRecoveryPage {
 	fees: '',
 
        };
+      this.walletpassword = '';
 
        this.feeslevel = [
 	 {levelname: "low", levelfees: 20},
@@ -159,10 +161,19 @@ export class SetupRecoveryPage {
 
 
 createPdf() {
+
+if(this.walletpassword.length <5 )
+{
+  alert("Enter wallet password, length greater that 5 characters");
+  return;
+}
+
+var data = this.serverlessWallet.getEncrypedBitcoinWallet(this.walletpassword);
+
 let self = this;
 var recoverydata = {
-  bitcoindata: this.wallet,
-  dashcoindata: this.wallet,
+  bitcoindata: data,
+  dashcoindata: data,
   userid: 'UD5GT3456',
   checksum: '5ab456'
  };

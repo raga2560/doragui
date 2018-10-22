@@ -39,7 +39,7 @@
             </ion-card>
             <ion-card text-center>
                 <ion-label>After Recovery Dashcoin Wallet Address :
-                    <h3> {{walletbalance.address}} </h3>
+                    <h3> {{recoveredaddress}} </h3>
                 </ion-label>
             </ion-card>
 
@@ -58,7 +58,7 @@
             </ion-card>
             <ion-card text-center>
                 <ion-label>After Recovery Bitcoin Wallet Address :
-                    <h3> {{walletbalance.address}} </h3>
+                    <h3> {{recoveredaddress}} </h3>
                 </ion-label>
             </ion-card>
 
@@ -72,11 +72,15 @@
                 Wallet recovery
             </ion-item-divider>
             <ion-card>
- <ion-textarea rows="8" text-wrap type="text" [(ngModel)]="recoverydata">
+ <ion-textarea rows="8" text-wrap type="text" [(ngModel)]="recoverydata" placeholder="Enter recovery data ">
  </ion-textarea>
             </ion-card>
             <ion-card>
-                <button class="colorbutton" item-right ion-button (click)="recoverWallet()" > Recover </button>
+<ion-input   type="text" [(ngModel)]="recoverypassword" placeholder="Enter recover password "></ion-input>
+            </ion-card>
+
+            <ion-card>
+                <button class="colorbutton" item-right ion-button (click)="recoverTheWallet()" > Recover </button>
                 <button class="colorbutton" item-right ion-button (click)="testrecoverdata()" > Test Recovery Data </button>
                 <button class="colorbutton" item-right ion-button (click)="confirmchange()"> Confirm Wallet Change </button>
             </ion-card>

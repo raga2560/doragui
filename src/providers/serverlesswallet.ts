@@ -81,23 +81,27 @@ export class ServerlessWallet {
   }
 
   getEncrypedBitcoinWallet(password:string){
-	var decoded = foo.bitcoin.Wif.decode(this.bitcoinwallet.walletwif)
+//    alert(this.bitcoinwallet.walletwif);
+	var decoded = foo.Wif.decode(this.bitcoinwallet.walletwif)
     var data = {
-	encrypedwalletwif : foo.bitcoin.Bip38.encrypt(decoded),
+	encrypedwalletwif : foo.Bip38.encrypt(decoded.privateKey, decoded.compressed, password),
         walletaddress: this.bitcoinwallet.walleykeyaddress
         };
     return data;
   }
 
 
-  getDecrypedBitcoinWallet(walletstring: any, password:string){
+  getDecrypedBitcoinWallet(recoverywallet: any, password:string){
+
+   var bitcoinwallet= recoverywallet.bitcoindata;
+   var dashcoinwallet= recoverywallet.bitcoindata;
 
    return new Promise((resolve, reject) => {
 
-   var 	decryptedKey =   foo.bitcoin.Bip38.decrypt(walletstring.walletwif, password, function(status) {
+   var 	decryptedKey =   foo.Bip38.decrypt(bitcoinwallet.encrypedwalletwif, password, function(status) {
     if(status.percent == 100)
     {
-	var decrypedwalletwif = foo.bitcoin.Wif.encode( 0x80, decrypedKey.privateKey, decrypedKey.compressed);
+	var decrypedwalletwif = foo.Wif.encode( 0x80, decryptedKey.privateKey, decryptedKey.compressed);
 
     var data = {
 	decrypedwalletwif : decrypedwalletwif,
