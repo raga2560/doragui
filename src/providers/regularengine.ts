@@ -10,6 +10,7 @@ import { ServerlessWallet } from './serverlesswallet';
 import { environment } from '../config/environment';
 
 let url = environment.url;
+let TOKEN = environment.token;
 let bitcoinMinimumSend = environment.bitcoinMinimumSend;
 let bitcoinMinimumReceive = environment.bitcoinMinimumReceive;
 
@@ -18,6 +19,13 @@ declare var foo;
 
 let partnerinfo = partner;
 let contractinfo = contract;
+
+/*
+https://www.blockcypher.com/dev/bitcoin/?javascript#rate-limits-and-tokens
+
+We want everyone to try BlockCypher with as little friction as possible, which is why you don’t need a token for any read-only GET calls. Please register for a user token if you want to use POST and DELETE calls. Once you have your token, you can append it to all your requests like any other URL parameter if you’re using cURL, or through the appropriate method in the language SDK you’re using.
+
+*/
 
 @Injectable()
 export class RegularEngine {

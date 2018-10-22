@@ -29,10 +29,13 @@ export class ServerlessWallet {
      this.initializeBitcoinWallet();
      this.initializeDashcoinWallet();
      this.loadexternalbitcoinwallet();
+//     this.loadexternaldashcoinwallet();
 
   }
 
   initializeDashcoinWallet(){
+// 
+   return this.initializeBitcoinWallet();
   }
 
   initializeBitcoinWallet(){
@@ -66,6 +69,7 @@ export class ServerlessWallet {
 
 
 });
+
   }
 
   loadexternalbitcoinwallet() {
@@ -105,12 +109,12 @@ export class ServerlessWallet {
       this.bitcoinexternalwallet = wal;
   }
 
-  createBitcoinWallet(todo){
-      this.storage.set('bitcoinwallet', todo);
+  createBitcoinWallet(walletdata){
+      this.storage.set('bitcoinwallet', walletdata);
   }
 
-  updateBitcoinWallet(todo){
-      this.storage.set('bitcoinwallet', todo);
+  updateBitcoinWallet(walletdata){
+      this.storage.set('bitcoinwallet', walletdata);
   }
 
   updateBitcoinWalletBalance(wb){
@@ -123,12 +127,12 @@ export class ServerlessWallet {
       this.dashcoinexternalwallet = wal;
   }
 
-  createDashcoinWallet(todo){
-      this.storage.set('dashcoinwallet', todo);
+  createDashcoinWallet(walletdata){
+      this.storage.set('dashcoinwallet', walletdata);
   }
 
-  updateDashcoinWallet(todo){
-      this.storage.set('dashcoinwallet', todo);
+  updateDashcoinWallet(walletdata){
+      this.storage.set('dashcoinwallet', walletdata);
   }
 
   updateDashcoinWalletBalance(wb){
