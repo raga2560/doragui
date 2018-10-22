@@ -93,13 +93,13 @@
             </ion-card-content>
             <ion-grid>
                 <ion-row>
-                    <!--ion-col>
-                      <button ion-button icon-only (click)="regularShare(i)" color="primary" clear>
+                    <ion-col>
+                      <button ion-button icon-only (click)="regularShareMessage()" color="primary" clear>
                     <ion-icon class="share-icon" name="share"></ion-icon>
                   </button>
                     </ion-col>
-                    <ion-col>
-                      <button ion-button icon-only (click)="whatsappShare(i)" color="primary" clear>
+                    <!-- ion-col>
+                      <button ion-button icon-only (click)="whatsappShareMessage()" color="primary" clear>
                     <ion-icon class="share-icon" name="logo-whatsapp"></ion-icon>
                   </button>
                     </ion-col>
@@ -113,6 +113,11 @@
                     <ion-icon class="share-icon" name="logo-twitter"></ion-icon>
                   </button>
                     </ion-col -->
+                    <ion-col>
+                      <button ion-button icon-only (click)="whatsappShareMessage()" color="primary" clear>
+                    <ion-icon class="share-icon" name="logo-whatsapp"></ion-icon>
+                  </button>
+                    </ion-col>
                     <ion-col>
                         <button ion-button icon-only (click)="copystring()" color="primary" clear>
                             <ion-icon name="copy"></ion-icon>

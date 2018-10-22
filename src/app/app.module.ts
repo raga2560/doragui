@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
-import { SocialSharing } from '@ionic-native/social-sharing';
 import { Clipboard } from '@ionic-native/clipboard';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
 import {EmailComposer} from '@ionic-native/email-composer';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 
 
 import { QRCodeModule } from 'angular2-qrcode';

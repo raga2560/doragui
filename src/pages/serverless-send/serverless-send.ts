@@ -130,6 +130,10 @@ export class ServerlessSendPage {
 
   }
   
+  regularShareMessage(){
+  this.socialSharing.share(this.serverless.sendstring, null, null, null);
+  }
+
   regularShare(index){
   var msg =1;
   let el: ElementRef = this.qrcode['elementRef'];
@@ -154,11 +158,14 @@ let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
   }
   
   whatsappShare(index){
-  let el: ElementRef = this.qrcode['elementRef'];
-let html : string  = el.nativeElement.innerHTML;
-let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
-   this.socialSharing.shareViaWhatsApp('msg', img64, null);
+  //let el: ElementRef = this.qrcode['elementRef'];
+// let html : string  = el.nativeElement.innerHTML;
+// let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
+//   this.socialSharing.shareViaWhatsApp('msg', img64, null);
  }
+  whatsappShareMessage(){
+   this.socialSharing.shareViaWhatsApp(this.serverless.sendstring, null, null);
+  }
 
 
   getPayment(txid) {

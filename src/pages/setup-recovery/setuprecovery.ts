@@ -31,6 +31,7 @@ export class SetupRecoveryPage {
   plans: any;
   feesdata: any;
   walletbalance: any;
+  recoverydata: any;
   externalwallet: any;
   walletpassword: string;
   wallet: any;
@@ -168,10 +169,12 @@ if(this.walletpassword.length <5 )
   return;
 }
 
+    this.showLoader();
 var data = this.serverlessWallet.getEncrypedBitcoinWallet(this.walletpassword);
 
+      this.loading.dismiss();
 let self = this;
-var recoverydata = {
+this.recoverydata = {
   bitcoindata: data,
   dashcoindata: data,
   userid: 'UD5GT3456',
@@ -182,7 +185,7 @@ var recoverydata = {
       content: [
  
  
-        { text: JSON.stringify(recoverydata), style: 'story', margin: [0, 20, 0, 20] },
+        { text: JSON.stringify(this.recoverydata), style: 'story', margin: [0, 20, 0, 20] },
  
       ],
       styles: {
@@ -204,6 +207,7 @@ var recoverydata = {
   }
 ;
 
+    this.showLoader();
 this.pdfObj = pdfMake.createPdf(docDefinition);
 
 /*
@@ -215,6 +219,7 @@ this.pdfObj.print();
 */
 this.pdfObj.getDataUrl((dataUrl) => {
     this.pdfurl = dataUrl;
+      this.loading.dismiss();
 });
 
 
@@ -227,11 +232,11 @@ downloadPdf() {
         var blob = new Blob([buffer], { type: 'application/pdf' });
  
 	console.log("data dir="+ this.file.dataDirectory);
-	alert("before write data dir="+ this.file.dataDirectory);
+//	alert("before write data dir="+ this.file.dataDirectory);
         // Save the PDF to the data Directory of our App
         this.file.writeFile(this.file.dataDirectory, 'WalletRec.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
-	alert("after write data dir="+ this.file.dataDirectory);
+//	alert("after write data dir="+ this.file.dataDirectory);
           this.fileOpener.open(this.file.dataDirectory + 'WalletRec.pdf', 'application/pdf');
         })
      .catch((err) => {
@@ -261,36 +266,19 @@ downloadPdf() {
         }
      });
 
-      this.pdfObj.getBuffer((buffer) => {
-        var blob = new Blob([buffer], { type: 'application/pdf' });
- 
-	console.log("data dir="+ this.file.dataDirectory);
-	alert("before write data dir="+ this.file.dataDirectory);
+//	alert("before write data dir="+ this.file.dataDirectory);
         // Save the PDF to the data Directory of our App
-        this.file.writeFile(this.file.dataDirectory, 'WalletRec.pdf', blob, { replace: true }).then(fileEntry => {
-          // Open the PDf with the correct OS tools
-	alert("after write data dir="+ this.file.dataDirectory);
        let email = {
          to: '',
-         attachments: [
-           this.file.dataDirectory + 'WalletRec.pdf'
-         ],
-
          subject: 'Wallet recovery data',
-         body: 'The attached file has wallet recovery data',
+         body: JSON.stringify(this.recoverydata),
          isHtml: true
        };
        this.emailComposer.open(email);
 
 
-     })
-     .catch((err) => {
-       alert(err);
-       console.error(err);
-     });
+     }
 
- });
-}
 }
 
   

@@ -26,6 +26,7 @@ export class RecoverWalletPage {
   walletbalance: any;
   recoverydata: any;
   recoveredaddress: any;
+  recoverypassword: string;
   externalwallet: any;
   wallet: any;
 
@@ -123,7 +124,7 @@ export class RecoverWalletPage {
    
 
  var promise = this.serverlessWallet.getDecrypedBitcoinWallet(rec, this.recoverypassword);
-   promise.then(data=>{
+   promise.then(function(data:any) {
 	this.recoveredaddress = data.walletaddress;	
    }, err=> {
 	alert("failed to recover");	

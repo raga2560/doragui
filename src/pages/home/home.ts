@@ -9,6 +9,7 @@ import { ServerlessWallet } from '../../providers/serverlesswallet';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {QRCodeComponent} from 'angular2-qrcode';
 import { Bitcoin } from '../../providers/bitcoin';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 
@@ -38,6 +39,8 @@ export class HomePage {
     public paymentService: ServerlessPayment,
   // public serverlessService: Serverless,
     public serverlessWallet: ServerlessWallet,
+    public socialSharing: SocialSharing,
+
     public bitcoinService: Bitcoin,
     public walletService: ServerlessWallet,
      private qrScanner: QRScanner,
@@ -90,7 +93,17 @@ export class HomePage {
 
 
   }
+  regularShareAddress(){
+  this.socialSharing.share(this.receiveqrcode , null, null, null);
+  }
+
+
   
+  whatsappShareAddress(){
+   this.socialSharing.shareViaWhatsApp(this.receiveqrcode , null, null);
+  }
+
+
   getWalletBalance(){
 
     this.showLoader();

@@ -27,7 +27,7 @@
     "@ionic-native/file": "^4.15.0",
     "@ionic-native/file-opener": "^4.15.0",
     "@ionic-native/qr-scanner": "^4.9.0",
-    "@ionic-native/social-sharing": "^4.9.0",
+    "@ionic-native/social-sharing": "^4.16.0",
     "@ionic-native/splash-screen": "4.7.0",
     "@ionic-native/status-bar": "4.7.0",
     "@ionic/storage": "2.1.3",

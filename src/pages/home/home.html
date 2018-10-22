@@ -31,8 +31,17 @@
     <div class="padContent" [ngSwitch]="relationship">
         <ion-list *ngSwitchCase="'bitcoin'">
             <ion-item-divider class="roundedge">
-                Balance : <span item-right>  10000 Bits </span>
+                Bitcoin Wallet Balance : <span item-right>  {{walletbalance.balance}}  </span>
             </ion-item-divider>
+            <ion-card text-center>
+                <ion-label>Bitcoin Wallet address :
+                    <h3> {{walletbalance.address}} </h3>
+                </ion-label>
+                <ion-label> Unconfirmed balance : {{walletbalance.unconfirmed_balance }}</ion-label>
+
+            </ion-card>
+
+
             <ion-item-divider class="roundedge">
                 Send Bitcoin
             </ion-item-divider>
@@ -68,7 +77,18 @@
                 <ion-card-content>
                     <qr-code id="qrcode" [value]="receiveqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
-                <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
+ <button ion-button icon-only (click)="copyaddress()" color="primary" clear>
+                            <ion-icon name="copy"></ion-icon>
+                        </button>
+
+  <button ion-button icon-only (click)="regularShareAddress()" color="primary" clear>
+                    <ion-icon class="share-icon" name="share"></ion-icon>
+                  </button>
+                      <button ion-button icon-only (click)="whatsappShareAddress()" color="primary" clear>
+                    <ion-icon class="share-icon" name="logo-whatsapp"></ion-icon>
+                  </button>
+
+
             </ion-card>
 
 
@@ -120,8 +140,17 @@
         <ion-list *ngSwitchCase="'dashcoin'">
 
             <ion-item-divider class="roundedge">
-                Balance : <span item-right>  10000 </span>
+                Dashcoin Wallet Balance : <span item-right>  {{walletbalance.balance}}  </span>
             </ion-item-divider>
+            <ion-card text-center>
+                <ion-label>Dashcoin Wallet address :
+                    <h3> {{walletbalance.address}} </h3>
+                </ion-label>
+                <ion-label> Unconfirmed balance : {{walletbalance.unconfirmed_balance }}</ion-label>
+
+            </ion-card>
+
+
             <ion-item-divider class="roundedge">
                 Send Dashcoin
             </ion-item-divider>
@@ -158,7 +187,17 @@
                 <ion-card-content>
                     <qr-code id="qrcode" [value]="sendqrcode" [canvas]="true"></qr-code>
                 </ion-card-content>
-                <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
+ <button ion-button icon-only (click)="copyaddress()" color="primary" clear>
+                            <ion-icon name="copy"></ion-icon>
+                        </button>
+
+  <button ion-button icon-only (click)="regularShareAddress()" color="primary" clear>
+                    <ion-icon class="share-icon" name="share"></ion-icon>
+                  </button>
+                      <button ion-button icon-only (click)="whatsappShareAddress()" color="primary" clear>
+                    <ion-icon class="share-icon" name="logo-whatsapp"></ion-icon>
+                  </button>
+
             </ion-card>
 
 

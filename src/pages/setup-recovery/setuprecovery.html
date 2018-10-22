@@ -73,10 +73,10 @@
  <ion-item-divider class="roundedge">
                 Wallet recovery data
             </ion-item-divider>
+  <ion-card text-center >
                 <button (click)="downloadPdf()" [disabled]="!pdfObj" class="colorbutton" item-left ion-button> Download </button>
-            <ion-item>
                 <button (click)="sendEmail()" [disabled]="!pdfObj" class="colorbutton" item-right ion-button> Send by email </button>
-            </ion-item>
+            </ion-card>
 
 
         <!--ion-item>
