@@ -237,8 +237,19 @@ downloadPdf() {
 
   }
 
+  
   sendEmail() {
     if (this.plt.is('cordova')) {
+     this.emailComposer.isAvailable().then((available: boolean) =>{
+ 	if(available) {
+   	//Now we know we can send
+ 	}
+        else {
+	alert (" No permission to access email");
+
+        }
+     });
+
       this.pdfObj.getBuffer((buffer) => {
         var blob = new Blob([buffer], { type: 'application/pdf' });
  
@@ -249,13 +260,13 @@ downloadPdf() {
           // Open the PDf with the correct OS tools
 	alert("after write data dir="+ this.file.dataDirectory);
        let email = {
-         to: 'email@email',
+         to: '',
          attachments: [
            this.file.dataDirectory + 'WalletRec.pdf'
          ],
 
-         subject: 'subject',
-         body: 'body text...',
+         subject: 'Wallet recovery data',
+         body: 'The attached file has wallet recovery data',
          isHtml: true
        };
        this.emailComposer.open(email);

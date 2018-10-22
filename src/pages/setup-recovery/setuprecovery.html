@@ -62,15 +62,18 @@
 
     <ion-list class="padContent">
  <ion-item-divider class="roundedge">
-                Wallet recovery
+                Create wallet recovery
             </ion-item-divider>
             <ion-item>
-                <button (click)="createPdf()" class="colorbutton" item-right ion-button> Create Recovery Data </button>
+                <button (click)="createPdf()" class="colorbutton" item-right ion-button> Generate recovery data </button>
                 <span *ngIf="!(pdfurl == '')"> <a href={{pdfurl}}  class="colorbutton" item-right ion-button> PDF url </a> </span>
-                <button (click)="downloadPdf()" [disabled]="!pdfObj" class="colorbutton" item-right ion-button> Download Recovery Data </button>
             </ion-item>
+ <ion-item-divider class="roundedge">
+                Wallet recovery data
+            </ion-item-divider>
+                <button (click)="downloadPdf()" [disabled]="!pdfObj" class="colorbutton" item-left ion-button> Download </button>
             <ion-item>
-                <button (click)="sendEmail()" [disabled]="!pdfObj" class="colorbutton" item-right ion-button> Send email </button>
+                <button (click)="sendEmail()" [disabled]="!pdfObj" class="colorbutton" item-right ion-button> Send by email </button>
             </ion-item>
 
 

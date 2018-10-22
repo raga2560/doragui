@@ -80,6 +80,40 @@ export class ServerlessWallet {
 
   }
 
+  getEncrypedBitcoinWallet(password:string){
+	var decoded = foo.bitcoin.Wif.decode(this.bitcoinwallet.walletwif)
+    var data = {
+	encrypedwalletwif : foo.bitcoin.Bip38.encrypt(decoded),
+        walletaddress: this.bitcoinwallet.walleykeyaddress
+        };
+    return data;
+  }
+
+
+  getDecrypedBitcoinWallet(walletstring: any, password:string){
+
+   return new Promise((resolve, reject) => {
+
+   var 	decryptedKey =   foo.bitcoin.Bip38.decrypt(walletstring.walletwif, password, function(status) {
+    if(status.percent == 100)
+    {
+	var decrypedwalletwif = foo.bitcoin.Wif.encode( 0x80, decrypedKey.privateKey, decrypedKey.compressed);
+
+    var data = {
+	decrypedwalletwif : decrypedwalletwif,
+        walletaddress: foo.bitcoin.ECPair.fromWIF(decrypedwalletwif).getAddress()
+        };
+    resolve( data);
+	
+    }
+
+   });
+   });
+
+  }
+
+
+
   getExternalBitcoinWallet(){
 
     return this.bitcoinexternalwallet;
