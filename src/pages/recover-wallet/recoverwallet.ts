@@ -115,6 +115,15 @@ export class RecoverWalletPage {
        }
        this.serverlessWallet.setExternalBitcoinWallet(this.externalwallet);
   }
+  testRecoveredWallet() {
+    if(this.wallet.walletkeyaddress == this.recoveredaddress)
+    {
+	alert ("Recovered wallet and Existing wallet match");
+    }
+    else {
+	alert ("Recovered wallet and Existing wallet don't match");
+    }
+  }
 
   recoverTheWallet() {
 
@@ -136,7 +145,7 @@ var s = p.toString();
 
  var promise = this.serverlessWallet.getDecrypedBitcoinWallet(rec, this.recoverypassword);
    promise.then(function(data:any) {
-	alert(JSON.stringify(data));
+//	alert(JSON.stringify(data));
         
 	this.recoveredaddress = data.walletaddress;	
       this.loading.dismiss();
