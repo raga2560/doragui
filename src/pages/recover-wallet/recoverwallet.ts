@@ -12,6 +12,9 @@ import { ServerlessWallet } from '../../providers/serverlesswallet';
  * Ionic pages and navigation.
  */
 
+declare var foo;
+
+
 @IonicPage()
 @Component({
   selector: 'page-recoverwallet',
@@ -120,14 +123,26 @@ export class RecoverWalletPage {
 	alert("Enter recovery password");
 	return;
         }
-	var rec = JSON.parse(this.recoverydata);
+var mystr = this.recoverydata.substr(13);
+
+var p = new foo.Buffer.Buffer(mystr, 'base64');
+var s = p.toString();
+
+    var rec = JSON.parse(s );
+
+
    
+  this.showLoader();
 
  var promise = this.serverlessWallet.getDecrypedBitcoinWallet(rec, this.recoverypassword);
    promise.then(function(data:any) {
+	alert(JSON.stringify(data));
+        
 	this.recoveredaddress = data.walletaddress;	
-   }, err=> {
+      this.loading.dismiss();
+   }.bind(this), err=> {
 	alert("failed to recover");	
+      this.loading.dismiss();
    });
 
 

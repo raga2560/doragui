@@ -19,6 +19,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
  * Ionic pages and navigation.
  */
 
+declare var foo;
+
 @IonicPage()
 @Component({
   selector: 'page-setuprecovery',
@@ -32,6 +34,8 @@ export class SetupRecoveryPage {
   feesdata: any;
   walletbalance: any;
   recoverydata: any;
+  encrypteddata: any; 
+  base64recoverydata: any;
   externalwallet: any;
   walletpassword: string;
   wallet: any;
@@ -170,22 +174,30 @@ if(this.walletpassword.length <5 )
 }
 
     this.showLoader();
-var data = this.serverlessWallet.getEncrypedBitcoinWallet(this.walletpassword);
-
+this.serverlessWallet.getEncrypedBitcoinWallet(this.walletpassword).then(function(data) {
+ this.encrypteddata = data;
       this.loading.dismiss();
+  }, err=>{
+  
+      this.loading.dismiss();
+ });
+
 let self = this;
 this.recoverydata = {
-  bitcoindata: data,
-  dashcoindata: data,
+  bitcoindata: this.encrypteddata,
+  dashcoindata: this.encrypteddata,
   userid: 'UD5GT3456',
   checksum: '5ab456'
  };
+
+this.base64recoverydata = "RECOVERYDATA_"+(new foo.Buffer.Buffer(JSON.stringify(this.recoverydata))).toString('base64');
+
 
  var docDefinition = {
       content: [
  
  
-        { text: JSON.stringify(this.recoverydata), style: 'story', margin: [0, 20, 0, 20] },
+        { text: this.base64recoverydata, style: 'story', margin: [0, 20, 0, 20] },
  
       ],
       styles: {
@@ -271,7 +283,7 @@ downloadPdf() {
        let email = {
          to: '',
          subject: 'Wallet recovery data',
-         body: JSON.stringify(this.recoverydata),
+         body: this.base64recoverydata,
          isHtml: true
        };
        this.emailComposer.open(email);

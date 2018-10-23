@@ -82,36 +82,44 @@ export class ServerlessWallet {
 
   getEncrypedBitcoinWallet(password:string){
 //    alert(this.bitcoinwallet.walletwif);
+   return new Promise((resolve, reject) => {
 	var decoded = foo.Wif.decode(this.bitcoinwallet.walletwif)
+   alert(JSON.stringify(decoded));
     var data = {
 	encrypedwalletwif : foo.Bip38.encrypt(decoded.privateKey, decoded.compressed, password),
         walletaddress: this.bitcoinwallet.walleykeyaddress
         };
-    return data;
+    resolve( data);
+     });
   }
 
 
   getDecrypedBitcoinWallet(recoverywallet: any, password:string){
-
+ alert(JSON.stringify(recoverywallet));
    var bitcoinwallet= recoverywallet.bitcoindata;
    var dashcoinwallet= recoverywallet.bitcoindata;
 
    return new Promise((resolve, reject) => {
 
    var 	decryptedKey =   foo.Bip38.decrypt(bitcoinwallet.encrypedwalletwif, password, function(status) {
-    if(status.percent == 100)
-    {
-	var decrypedwalletwif = foo.Wif.encode( 0x80, decryptedKey.privateKey, decryptedKey.compressed);
+    console.log(status.percent);
 
+   });
+
+    console.log("Now encoding");
+    console.log(decryptedKey);
+	var decrypedwalletwif = foo.Wif.encode( 239, decryptedKey.privateKey, decryptedKey.compressed);
+    console.log(decrypedwalletwif);
+        var addr = foo.bitcoin.ECPair.fromWIF(decrypedwalletwif, foo.bitcoin.networks.testnet).getAddress();
+        console.log( addr);
     var data = {
 	decrypedwalletwif : decrypedwalletwif,
-        walletaddress: foo.bitcoin.ECPair.fromWIF(decrypedwalletwif).getAddress()
+        walletaddress: addr
         };
     resolve( data);
 	
-    }
 
-   });
+
    });
 
   }
