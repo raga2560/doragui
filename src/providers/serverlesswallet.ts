@@ -72,6 +72,32 @@ export class ServerlessWallet {
 
   }
 
+  dowalletChange(bitwallet, dashwallet) {
+
+   this.storage.get('bitcoinwallet').then((data) => {
+        this.storage.set('prevbitcoinwallet', data);
+        this.storage.set('bitcoinwallet', bitwallet);
+   });
+
+   this.storage.get('dashcoinwallet').then((data) => {
+        this.storage.set('prevdashcoinwallet', data);
+        this.storage.set('dashcoinwallet', dashwallet);
+   });
+
+
+  }
+
+  getPrevWallet () {
+   this.storage.get('prevbitcoinwallet').then((data) => {
+        this.storage.set('bitcoinwallet', data);
+   });
+
+   this.storage.get('prevdashcoinwallet').then((data) => {
+        this.storage.set('dashcoinwallet', data);
+   });
+
+  }
+
   loadexternalbitcoinwallet() {
 
    this.storage.get('bitcoinexternalwallet').then((data) => {
@@ -84,7 +110,7 @@ export class ServerlessWallet {
 //    alert(this.bitcoinwallet.walletwif);
    return new Promise((resolve, reject) => {
 	var decoded = foo.Wif.decode(this.bitcoinwallet.walletwif)
-   alert(JSON.stringify(decoded));
+//   alert(JSON.stringify(decoded));
     var data = {
 	encrypedwalletwif : foo.Bip38.encrypt(decoded.privateKey, decoded.compressed, password),
         walletaddress: this.bitcoinwallet.walleykeyaddress
@@ -106,16 +132,27 @@ export class ServerlessWallet {
 
    });
 
-    console.log("Now encoding");
-    console.log(decryptedKey);
-	var decrypedwalletwif = foo.Wif.encode( 239, decryptedKey.privateKey, decryptedKey.compressed);
-    console.log(decrypedwalletwif);
-        var addr = foo.bitcoin.ECPair.fromWIF(decrypedwalletwif, foo.bitcoin.networks.testnet).getAddress();
-        console.log( addr);
+   var 	dashdecryptedKey =   foo.Bip38.decrypt(dashcoinwallet.encrypedwalletwif, password, function(status) {
+    console.log(status.percent);
+
+   });
+
+	var bitcoindecrypedwalletwif = foo.Wif.encode( 239, decryptedKey.privateKey, decryptedKey.compressed);
+        var bitcoinaddr = foo.bitcoin.ECPair.fromWIF(bitcoindecrypedwalletwif, foo.bitcoin.networks.testnet).getAddress();
+
+	var dashcoindecrypedwalletwif = foo.Wif.encode( 239, decryptedKey.privateKey, decryptedKey.compressed);
+        var dashcoinaddr = foo.bitcoin.ECPair.fromWIF(dashcoindecrypedwalletwif, foo.bitcoin.networks.testnet).getAddress();
+
     var data = {
-	decrypedwalletwif : decrypedwalletwif,
-        walletaddress: addr
+	bitcoindecrypedwalletwif : bitcoindecrypedwalletwif,
+        bitcoinwalletaddress: bitcoinaddr,
+	dashcoindecrypedwalletwif : dashcoindecrypedwalletwif,
+        dashcoinwalletaddress: dashcoinaddr
         };
+
+
+
+
     resolve( data);
 	
 

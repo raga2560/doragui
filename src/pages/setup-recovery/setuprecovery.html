@@ -68,6 +68,9 @@
                 <ion-input   type="text" [(ngModel)]="walletpassword" placeholder="Enter wallet password "></ion-input>
                 <button (click)="createPdf()" class="colorbutton" item-right ion-button> Generate recovery data </button>
             </ion-card>
+  <ion-card class="secondary" text-center *ngIf="encryptioninprogress">
+ Preparing recovery file
+            </ion-card>
 
 
  <ion-item-divider class="roundedge">

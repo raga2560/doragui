@@ -35,6 +35,7 @@ export class SetupRecoveryPage {
   walletbalance: any;
   recoverydata: any;
   encrypteddata: any; 
+  encryptioninprogress = false;
   base64recoverydata: any;
   externalwallet: any;
   walletpassword: string;
@@ -173,14 +174,19 @@ if(this.walletpassword.length <5 )
   return;
 }
 
+this.encryptioninprogress = true;
+  alert("Preparing recovery file ");
     this.showLoader();
+setTimeout(()=>{    
+      this.loading.dismiss();
+ }, 3000);
+
+
 this.serverlessWallet.getEncrypedBitcoinWallet(this.walletpassword).then(function(data) {
  this.encrypteddata = data;
-      this.loading.dismiss();
-  }, err=>{
+  }.bind(this), function(err){
   
-      this.loading.dismiss();
- });
+ }.bind(this));
 
 let self = this;
 this.recoverydata = {
@@ -218,8 +224,8 @@ this.base64recoverydata = "RECOVERYDATA_"+(new foo.Buffer.Buffer(JSON.stringify(
       }
   }
 ;
+this.encryptioninprogress = false;
 
-    this.showLoader();
 this.pdfObj = pdfMake.createPdf(docDefinition);
 
 /*
@@ -229,10 +235,11 @@ alert("print");
 
 this.pdfObj.print();
 */
-this.pdfObj.getDataUrl((dataUrl) => {
+this.pdfObj.getDataUrl(function(dataUrl) {
     this.pdfurl = dataUrl;
-      this.loading.dismiss();
-});
+}.bind(this), function(err){
+ console.log(err);
+}.bind(this));
 
 
 }

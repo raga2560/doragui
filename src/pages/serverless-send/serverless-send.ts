@@ -134,11 +134,12 @@ export class ServerlessSendPage {
   this.socialSharing.share(this.serverless.sendstring, null, null, null);
   }
 
-  regularShare(index){
+  regularShare(){
   var msg =1;
   let el: ElementRef = this.qrcode['elementRef'];
 let html : string  = el.nativeElement.innerHTML;
 let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
+img64 = "data:image/png;base64," + img64;
 
   this.socialSharing.share(null, null, img64, html);
   }
@@ -157,11 +158,11 @@ let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
     this.socialSharing.shareViaFacebook(null, img64, html);
   }
   
-  whatsappShare(index){
-  //let el: ElementRef = this.qrcode['elementRef'];
-// let html : string  = el.nativeElement.innerHTML;
-// let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
-//   this.socialSharing.shareViaWhatsApp('msg', img64, null);
+  whatsappShare(){
+  let el: ElementRef = this.qrcode['elementRef'];
+ let html : string  = el.nativeElement.innerHTML;
+ let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
+   this.socialSharing.shareViaWhatsApp(null, img64, html);
  }
   whatsappShareMessage(){
    this.socialSharing.shareViaWhatsApp(this.serverless.sendstring, null, null);

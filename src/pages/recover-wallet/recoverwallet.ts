@@ -28,7 +28,10 @@ export class RecoverWalletPage {
   feesdata: any;
   walletbalance: any;
   recoverydata: any;
+  prevwalletpresent = false;
   recoveredaddress: any;
+  recoveredbitcoinwallet: any;
+  recovereddashcoinwallet: any;
   recoverypassword: string;
   externalwallet: any;
   wallet: any;
@@ -148,6 +151,16 @@ var s = p.toString();
 //	alert(JSON.stringify(data));
         
 	this.recoveredaddress = data.walletaddress;	
+        this.recovereddashcoinwallet = { 
+          walletwif: data.dashcoindecrypedwalletwif,
+          walletkeyaddress: data.dashcoinwalletaddress
+        };
+
+        this.recoveredbitcoinwallet = { 
+          walletwif: data.bitcoindecrypedwalletwif,
+          walletkeyaddress: data.bitcoinwalletaddress
+        };
+
       this.loading.dismiss();
    }.bind(this), err=> {
 	alert("failed to recover");	
@@ -158,6 +171,16 @@ var s = p.toString();
 
 
   }
+
+ confirmWalletChange () {
+  this.serverlessWallet.dowalletChange(this.recoveredbitcoinwallet,
+	this.recovereddashcoinwallet );
+  this.prevwalletpresent = true;
+ }
+ getPrevWallet () {
+  this.serverlessWallet.getPrevWallet();
+  this.prevwalletpresent = false;
+ }
 
   sendexternalamount() {
        var ext = this.serverlessWallet.getExternalBitcoinWallet();

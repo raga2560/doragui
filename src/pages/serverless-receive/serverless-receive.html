@@ -62,15 +62,15 @@
         <ion-item-divider class="roundedge">
             Wallet balance
         </ion-item-divider>
-        <ion-item>
+        <ion-card text-center>
             <ion-label> Balance : {{walletbalance.balance }}</ion-label>
-        </ion-item>
-        <ion-item>
+        </ion-card>
+        <ion-card text-center>
             <ion-label> Unconfirmed Payment : {{walletbalance.unconfirmed_balance }}</ion-label>
-        </ion-item>
-        <ion-item>
+        </ion-card>
+        <ion-card text-center>
             <button item-right ion-button (click)="getWalletBalance()" class="colorbutton">Check Wallet Balance</button>
-        </ion-item>
+        </ion-card>
     </ion-list>
 
 </ion-content>

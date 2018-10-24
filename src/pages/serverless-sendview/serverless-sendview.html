@@ -20,43 +20,48 @@
 
   <ion-list  inset padding *ngIf="paymentdata" >
         <ion-item-divider class="roundedge" >
-            <p> Sent money   </p>
+             Sent money   
         </ion-item-divider>
 
-        <ion-card>
+        <ion-card text-center>
             <ion-label > Sent: {{paymentdata.paymentvalue}} </ion-label>
         </ion-card>
 
-        <ion-card>
+        <ion-card text-center>
             <ion-label  text-wrap> Address of payment :{{paymentdata.paymentaddress}} </ion-label> 
-            <button item-right ion-button small class="colorbutton" (click)="getPaymentBalance()">Revert payment </button>
+            <button item-right ion-button small class="colorbutton" (click)="revertPayment()">Revert payment </button>
         </ion-card>
-        <ion-card>
+        <ion-card text-center>
             <ion-label text-wrap> Sent transaction-id : {{paymentdata.paymenttxid}} </ion-label> 
         </ion-card>
 <ion-card text-center>
-            <ion-card-title padding class="greyback">
+            <ion-card-title >
                 Sent Payment Message
             </ion-card-title>
             <ion-card-content text-center>
-                <p>
+                
                     {{paymentdata.paymentstring}}
-                </p>
+                
 
             </ion-card-content>
 </ion-card>
 <ion-card text-center>
-            <ion-card-title padding class="greyback">
+            <ion-card-title >
                 PIN given for Receiver
             </ion-card-title>
             <ion-card-content text-center>
                 {{paymentdata.paymentpin}}
             </ion-card-content>
 </ion-card>
-        <ion-card>
+<ion-card text-center>
+            <ion-label text-wrap> Address of Payment :{{paymentdata.paymentaddress}}</ion-label>
+            <button item-right ion-button small class="colorbutton" (click)="getPaymentBalance()">Check balance</button>
+        </ion-card>
+
+        <ion-card text-center>
             <ion-label > Balance : {{balance.balance  }} </ion-label> 
         </ion-card>
-        <ion-card>
+        <ion-card text-center>
             <ion-label > Unconfirmed balance :  {{balance.unconfirmed_balance }} </ion-label> 
         </ion-card>
    </ion-list>

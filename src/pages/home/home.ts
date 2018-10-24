@@ -9,6 +9,8 @@ import { ServerlessWallet } from '../../providers/serverlesswallet';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {QRCodeComponent} from 'angular2-qrcode';
 import { Bitcoin } from '../../providers/bitcoin';
+import { Clipboard } from '@ionic-native/clipboard';
+
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 
@@ -39,6 +41,7 @@ export class HomePage {
     public paymentService: ServerlessPayment,
   // public serverlessService: Serverless,
     public serverlessWallet: ServerlessWallet,
+    private clipboard: Clipboard,
     public socialSharing: SocialSharing,
 
     public bitcoinService: Bitcoin,
@@ -67,6 +70,12 @@ export class HomePage {
 
 
   }
+
+  copyaddress () {
+  this.clipboard.copy(this.walletbalance.address);
+  }
+
+
 
   ionViewDidLoad(){
 

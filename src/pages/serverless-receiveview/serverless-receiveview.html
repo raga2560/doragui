@@ -23,19 +23,19 @@
              Received money  
         </ion-item-divider>
 
-        <ion-card>
+        <ion-card text-center>
             <ion-label > Received: {{paymentdata.paymentvalue}} </ion-label>
         </ion-card>
 
-        <ion-card>
-            <ion-label  text-wrap> Address of payment :{{paymentdata.paymentaddress}} </ion-label> 
-            <button item-right ion-button small class="colorbutton" (click)="getPaymentBalance()">Revert payment </button>
+        <ion-card text-center>
+            <ion-label  text-wrap> Address of payment {{paymentdata.paymentaddress}} </ion-label> 
+            <button item-right ion-button small class="colorbutton" (click)="getPaymentBalance()">Get balance </button>
         </ion-card>
-        <ion-card>
+        <ion-card text-center>
             <ion-label text-wrap> Received transaction-id : {{paymentdata.paymenttxid}} </ion-label> 
         </ion-card>
 <ion-card text-center>
-            <ion-card-title class="greyback">
+            <ion-card-title class="twitter">
                 Received Payment Message
             </ion-card-title>
             <ion-card-content text-center>
@@ -44,7 +44,7 @@
             </ion-card-content>
 </ion-card>
 <ion-card text-center>
-            <ion-card-title class="greyback">
+            <ion-card-title class="twitter">
                 PIN given by sender
             </ion-card-title>
             <ion-card-content text-center>
@@ -52,14 +52,8 @@
             </ion-card-content>
 </ion-card>
         <ion-card>
-            <ion-label > Balance : {{balance.balance  }} </ion-label> 
-        </ion-card>
-        <ion-card>
             <ion-label > Unconfirmed balance :  {{balance.unconfirmed_balance }} </ion-label> 
         </ion-card>
-<ion-item>
-            <button item-right ion-button (click)="getWalletBalance()" class="colorbutton">Check Wallet Balance</button>
-        </ion-item>
 
    </ion-list>
 

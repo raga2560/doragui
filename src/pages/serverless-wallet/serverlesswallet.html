@@ -31,21 +31,21 @@
                 Dashcoin Wallet
             </ion-item-divider>
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-label>Dashcoin Wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
                 <button item-right ion-button small class="colorbutton" (click)="copyaddr()">Copy</button>
             </ion-card>
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-label> Dashcoin Wallet balance: {{walletbalance.balance}}</ion-label>
                 <button item-right ion-button small class="colorbutton" (click)="getWalletBalance()">Get balance
                 </button>
             </ion-card>
-            <ion-item>
+            <ion-card text-center>
                 <ion-label> Unconfirmed balance : {{walletbalance.unconfirmed_balance }}</ion-label>
-            </ion-item>
+            </ion-card>
 
 
 
@@ -58,21 +58,21 @@
             </ion-item-divider>
 
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-label>Bitcoin Wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
                 <button item-right ion-button small class="colorbutton" (click)="copyaddr()">Copy</button>
             </ion-card>
 
-            <ion-card>
+            <ion-card text-center>
                 <ion-label> Bitcoin Wallet balance: {{walletbalance.balance}}</ion-label>
                 <button item-right ion-button small class="colorbutton" (click)="getWalletBalance()">Get balance
                 </button>
             </ion-card>
-            <ion-item>
+            <ion-card text-center>
                 <ion-label> Unconfirmed balance : {{walletbalance.unconfirmed_balance }}</ion-label>
-            </ion-item>
+            </ion-card>
 
 
         </ion-list>

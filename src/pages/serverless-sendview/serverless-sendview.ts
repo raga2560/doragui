@@ -79,7 +79,10 @@ export class ServerlessSendviewPage {
   this.clipboard.copy(this.walletbalance.address);
   }
   
+ revertPayment() {
 
+	alert("yet to be implemented");
+ }
   showLoader(){
 
     this.loading = this.loadingCtrl.create({

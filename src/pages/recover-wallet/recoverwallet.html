@@ -85,8 +85,9 @@
 
             <ion-card>
                 <button class="colorbutton" item-right ion-button (click)="recoverTheWallet()" > Recover </button>
-                <button class="colorbutton" item-right ion-button (click)="testrecoverdata()" [disabled]="recoveredaddress ==''"> Test Recovery Data </button>
-                <button class="colorbutton" item-right ion-button (click)="confirmchange()" [disabled]="recoveredaddress ==''"> Confirm Wallet Change </button>
+                <button class="colorbutton" item-right ion-button (click)="testRecoveredWallet()" [disabled]="recoveredaddress ==''"> Test Recovery Data </button>
+                <button class="colorbutton" item-right ion-button (click)="confirmWalletChange()" [disabled]="recoveredaddress ==''"> Confirm Wallet Change </button>
+                <button class="colorbutton" item-right ion-button (click)="confirmWalletChange()" [disabled]="!prevwalletpresent"> Get Previous Wallet </button>
             </ion-card>
 
     </ion-list>
