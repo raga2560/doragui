@@ -191,6 +191,12 @@ export class HomePage {
     this.navCtrl.setRoot(LoginPage);
 
   }
+  send () {
+
+  }
+  pastestring() {
+
+  }
  
   refresh() {
   this.refreshEnable = false;

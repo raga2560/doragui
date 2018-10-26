@@ -38,17 +38,17 @@ export class MyApp
         this.pages = [
             {title: 'Home', component: HomePage, icon: 'home'},
             {title: 'Divider', component: '', icon: 'none'},
-            {title: 'Wallet ', component: ServerlessWalletPage, icon: 'home'},
-            {title: 'Wallet Access ', component: LoginPage, icon: 'home'},
+            {title: 'Wallet ', component: ServerlessWalletPage, icon: 'arrow-forward'},
+            {title: 'Wallet Access ', component: LoginPage, icon: 'key'},
             {title: 'Divider', component: '', icon: 'none'},
-            {title: 'Setup Wallet Recovery', component: SetupRecoveryPage, icon: 'contact'},
-            {title: 'Recover Wallet', component: RecoverWalletPage, icon: 'contact'},
+            {title: 'Setup Wallet Recovery', component: SetupRecoveryPage, icon: 'archive'},
+            {title: 'Recover Wallet', component: RecoverWalletPage, icon: 'arrow-down'},
             {title: 'Divider', component: '', icon: 'none'},
 
-            {title: 'Pay as Message', component: ServerlessSendPage, icon: 'contact'},
-            {title: 'Receive Payment ', component: ServerlessReceivePage, icon: 'contact'},
+            {title: 'Pay as Message', component: ServerlessSendPage, icon: 'return-right'},
+            {title: 'Receive Payment ', component: ServerlessReceivePage, icon: 'return-left'},
             {title: 'Divider', component: '', icon: 'none'},
-            {title: 'Payment Setting', component: SerlessettingPage, icon: 'contact'}
+            {title: 'External Setting', component: SerlessettingPage, icon: 'settings'}
         ];
 
     }

@@ -52,7 +52,7 @@
             <ion-card text-center >
                 <ion-input   type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
                 <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste Address</button>
-                <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Send</button>
+                <button item-right ion-button small (click)="send()" class="colorbutton">Send</button>
             </ion-card>
             <ion-card text-center>
                 <ion-card-title padding >
@@ -164,7 +164,7 @@
             <ion-card text-center>
                 <ion-input type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
                 <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste address</button>
-                <button item-right ion-button small (click)="saveexternaladdress()" class="colorbutton">Send</button>
+                <button item-right ion-button small (click)="send()" class="colorbutton">Send</button>
             </ion-card>
             <ion-card  text-center>>
                 <ion-card-title padding>
@@ -228,6 +228,9 @@
             <ion-item *ngIf="sentTransactions == ''">
                  No sent transactions 
             </ion-item>
+            <ion-item-divider class="roundedge">
+                Latest 3 received transactions
+            </ion-item-divider>
             <div *ngIf="receivedTransactions != ''">
                 <div *ngFor="let todo of receivedTransactions; let i = index">
 
@@ -242,9 +245,6 @@
 
                 </div>
             </div>
-            <ion-item-divider class="roundedge">
-                Latest 3 received transactions
-            </ion-item-divider>
             <ion-item *ngIf="receivedTransactions == ''">
                  No received transactions
             </ion-item>

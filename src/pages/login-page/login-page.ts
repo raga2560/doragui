@@ -12,6 +12,7 @@ export class LoginPage {
 
 	email: string;
 	password: string;
+	reenteredpassword: string;
 	loading: any;
 
 	constructor(public navCtrl: NavController, public authService: Auth, public loadingCtrl: LoadingController) {
