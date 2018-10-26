@@ -19,18 +19,18 @@
 <ion-content padding>
     <ion-list *ngIf="serverless">
         <ion-item-divider class="roundedge">
-            Send Money
+            Send Bitcoin
         </ion-item-divider>
 
-        <ion-item>
-            <ion-label text-wrap>
-                <h2> Wallet Balance: {{walletbalance.balance}} </h2>
-
-            </ion-label>
-        </ion-item>
         <ion-card text-center>
             <ion-label text-wrap>
-                <h2> Wallet Address: </h2> <h3> {{walletbalance.address}} </h3>
+                <h2> Wallet balance: {{walletbalance.balance}} </h2>
+
+            </ion-label>
+        </ion-card>
+        <ion-card text-center>
+            <ion-label text-wrap>
+                <h2> Wallet address: </h2> <h3> {{walletbalance.address}} </h3>
             </ion-label>
             <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
 
@@ -47,7 +47,7 @@
             <ion-card-title padding >
                 Pay as QR-code
             </ion-card-title>
-            <ion-card-content text-center>
+            <ion-card-content text-center *ngIf="serverless.sendqrcode != ''">
                 <qr-code id="qrcode" [value]="serverless.sendqrcode" [canvas]="true"></qr-code>
             </ion-card-content>
             <!-- Sharing Icons -->
@@ -166,17 +166,17 @@
             </ion-grid>
         </ion-card>
         <ion-card text-center>
-            <ion-label text-wrap> Address of Payment :{{serverless.sendaddress}}</ion-label>
+            <ion-label text-wrap> Address of payment :{{serverless.sendaddress}}</ion-label>
             <button item-right ion-button small class="colorbutton" (click)="getPaymentBalance()">Check balance</button>
         </ion-card>
         <ion-card>
-            <ion-label text-wrap> Sent Transaction Id : {{serverless.sendtxid}}</ion-label>
+            <ion-label text-wrap> Sent transaction ID : {{serverless.sendtxid}}</ion-label>
         </ion-card>
         <ion-card>
             <ion-label> Balance : {{balance.balance }}</ion-label>
         </ion-card>
         <ion-card>
-            <ion-label> Unconfirmed Balance : {{balance.unconfirmed_balance }}</ion-label>
+            <ion-label> Unconfirmed balance : {{balance.unconfirmed_balance }}</ion-label>
         </ion-card>
     </ion-list>
 </ion-content>

@@ -31,14 +31,14 @@
     <div class="padContent" [ngSwitch]="relationship">
         <ion-list *ngSwitchCase="'bitcoin'">
             <ion-item-divider class="roundedge">
-                Bitcoin Wallet 
+                Bitcoin wallet 
             </ion-item-divider>
             <ion-card text-center>
-                <ion-label>Bitcoin Wallet address :
+                <ion-label>Bitcoin wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
                 <ion-label>
-                Bitcoin Wallet Balance :   {{walletbalance.balance}} 
+                Bitcoin wallet balance :   {{walletbalance.balance}} 
                 </ion-label>
                 <ion-label> Unconfirmed balance : {{walletbalance.unconfirmed_balance }}</ion-label>
 
@@ -143,14 +143,14 @@
         <ion-list *ngSwitchCase="'dashcoin'">
 
             <ion-item-divider class="roundedge">
-                Dashcoin Wallet 
+                Dashcoin wallet 
             </ion-item-divider>
             <ion-card text-center>
-                <ion-label>Dashcoin Wallet address :
+                <ion-label>Dashcoin wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
                 <ion-label>
-                Dashcoin Wallet Balance :  {{walletbalance.balance}}  
+                Dashcoin wallet balance :  {{walletbalance.balance}}  
                 </ion-label>
                 <ion-label> Unconfirmed balance : {{walletbalance.unconfirmed_balance }}</ion-label>
 

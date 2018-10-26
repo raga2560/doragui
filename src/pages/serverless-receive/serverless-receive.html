@@ -18,18 +18,18 @@
 <ion-content padding>
     <ion-list *ngIf="serverless">
         <ion-item-divider class="roundedge">
-            Accept Money
+            Accept Bitcoin
         </ion-item-divider>
-        <ion-item>
-            <ion-label text-wrap>
-                <h2> Wallet Balance: </h2> <h3>{{walletbalance.balance}} </h3>
-            </ion-label>
-        </ion-item>
         <ion-card text-center>
             <ion-label text-wrap>
-                <h2> Wallet Address: </h2> <h3> {{walletbalance.address}} </h3>
+                <h2> Wallet balance: </h2> <h3>{{walletbalance.balance}} </h3>
             </ion-label>
-            <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy Address</button>
+        </ion-card>
+        <ion-card text-center>
+            <ion-label text-wrap>
+                <h2> Wallet address: </h2> <h3> {{walletbalance.address}} </h3>
+            </ion-label>
+            <button item-right ion-button small class="colorbutton" (click)="copyaddress()">Copy address</button>
         </ion-card>
 
         <ion-card *ngIf="serverless" text-center>
@@ -39,7 +39,7 @@
         <ion-card *ngIf="serverless" text-center>
             <ion-textarea rows="8" text-wrap type="text" [(ngModel)]="serverless.receivedstring"
                           placeholder="Enter received string"></ion-textarea>
-            <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste String</button>
+            <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste string</button>
         </ion-card>
 
         <ion-card *ngIf="serverless" text-center>
@@ -48,7 +48,7 @@
 
         </ion-card>
         <ion-card text-center>
-            <ion-label> Transacted Amount: {{serverless.receivedamount}}</ion-label>
+            <ion-label> Transacted amount: {{serverless.receivedamount}}</ion-label>
             <button item-right ion-button small (click)="receiveFund()" class="colorbutton">Receive Fund</button>
         </ion-card>
         <ion-item text-wrap *ngIf="errordata.receivedmessage != ''" color="danger">
@@ -56,7 +56,7 @@
         </ion-item>
 
         <ion-card>
-            <ion-label text-wrap> Received Transaction Id : {{serverless.receivedtxid}}</ion-label>
+            <ion-label text-wrap> Received transaction ID : {{serverless.receivedtxid}}</ion-label>
         </ion-card>
 
         <ion-item-divider class="roundedge">
@@ -66,10 +66,10 @@
             <ion-label> Balance : {{walletbalance.balance }}</ion-label>
         </ion-card>
         <ion-card text-center>
-            <ion-label> Unconfirmed Payment : {{walletbalance.unconfirmed_balance }}</ion-label>
+            <ion-label> Unconfirmed payment : {{walletbalance.unconfirmed_balance }}</ion-label>
         </ion-card>
         <ion-card text-center>
-            <button item-right ion-button (click)="getWalletBalance()" class="colorbutton">Check Wallet Balance</button>
+            <button item-right ion-button (click)="getWalletBalance()" class="colorbutton">Check wallet balance</button>
         </ion-card>
     </ion-list>
 

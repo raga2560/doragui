@@ -10,7 +10,7 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>
-            Setup Wallet Recovery
+            Setup wallet recovery
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -29,11 +29,11 @@
         <ion-list *ngSwitchCase="'dashcoin'">
 
             <ion-item-divider class="roundedge">
-                Dashcoin Wallet
+                Dashcoin wallet
             </ion-item-divider>
 
             <ion-card text-center>
-                <ion-label>Dashcoin Wallet address :
+                <ion-label>Dashcoin wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
             </ion-card>
@@ -45,12 +45,12 @@
     <div class="padContent" [ngSwitch]="relationship">
         <ion-list *ngSwitchCase="'bitcoin'">
             <ion-item-divider class="roundedge">
-                Bitcoin Wallet
+                Bitcoin wallet
             </ion-item-divider>
 
 
             <ion-card text-center>
-                <ion-label>Bitcoin Wallet address :
+                <ion-label>Bitcoin wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
             </ion-card>
@@ -65,7 +65,7 @@
                 Create wallet recovery
             </ion-item-divider>
   <ion-card text-center >
-                <ion-input   type="text" [(ngModel)]="walletpassword" placeholder="Enter wallet password "></ion-input>
+                <ion-input   type="text" [(ngModel)]="walletpassword" placeholder="Enter wallet recovery password "></ion-input>
                 <button (click)="createPdf()" class="colorbutton" item-right ion-button> Generate recovery data </button>
             </ion-card>
   <ion-card class="secondary" text-center *ngIf="encryptioninprogress">

@@ -29,19 +29,19 @@
         <ion-list *ngSwitchCase="'dashcoin'">
 
             <ion-item-divider class="roundedge">
-                Dashcoin Wallet
+                Dashcoin wallet
             </ion-item-divider>
 
             <ion-card text-center>
-                <ion-label>Current Dashcoin Wallet Address :
+                <ion-label>Current Dashcoin wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
             </ion-card>
             <ion-card text-center>
-                <ion-label *ngIf="recoveredaddress != ''">After Recovery Dashcoin Wallet Address :
+                <ion-label *ngIf="recoveredaddress != ''">After recovery dashcoin wallet address :
                     <h3> {{recoveredaddress}} </h3>
                 </ion-label>
-                <ion-label *ngIf="recoveredaddress == ''"> Place for recovered Dashcoin Wallet Address 
+                <ion-label *ngIf="recoveredaddress == ''"> Place for recovered Dashcoin wallet address 
                 </ion-label>
             </ion-card>
 
@@ -50,19 +50,19 @@
     <div class="padContent" [ngSwitch]="relationship">
         <ion-list *ngSwitchCase="'bitcoin'">
             <ion-item-divider class="roundedge">
-                Bitcoin Wallet
+                Bitcoin wallet
             </ion-item-divider>
 
             <ion-card text-center>
-                <ion-label>Current Bitcoin Wallet Address :
+                <ion-label>Current Bitcoin wallet address :
                     <h3> {{walletbalance.address}} </h3>
                 </ion-label>
             </ion-card>
             <ion-card text-center>
-                <ion-label *ngIf="recoveredaddress != ''">After Recovery Bitcoin Wallet Address :
+                <ion-label *ngIf="recoveredaddress != ''">After recovery Bitcoin wallet address :
                     <h3> {{recoveredaddress}} </h3>
                 </ion-label>
-                <ion-label *ngIf="recoveredaddress == ''"> Place for recovered Bitcoin Wallet Address 
+                <ion-label *ngIf="recoveredaddress == ''"> Place for recovered Bitcoin wallet address 
                 </ion-label>
             </ion-card>
 
@@ -76,18 +76,18 @@
                 Wallet recovery
             </ion-item-divider>
             <ion-card>
- <ion-textarea rows="8" text-wrap type="text" [(ngModel)]="recoverydata" placeholder="Enter recovery data ">
+ <ion-textarea rows="8" text-wrap type="text" [(ngModel)]="recoverydata" placeholder="Enter wallet recovery data here ">
  </ion-textarea>
             </ion-card>
             <ion-card>
-<ion-input   type="text" [(ngModel)]="recoverypassword" placeholder="Enter recover password "></ion-input>
+<ion-input   type="text" [(ngModel)]="recoverypassword" placeholder="Enter wallet recovery password here "></ion-input>
             </ion-card>
 
             <ion-card>
                 <button class="colorbutton" item-right ion-button (click)="recoverTheWallet()" > Recover </button>
-                <button class="colorbutton" item-right ion-button (click)="testRecoveredWallet()" [disabled]="recoveredaddress ==''"> Test Recovery Data </button>
-                <button class="colorbutton" item-right ion-button (click)="confirmWalletChange()" [disabled]="recoveredaddress ==''"> Confirm Wallet Change </button>
-                <button class="colorbutton" item-right ion-button (click)="confirmWalletChange()" [disabled]="!prevwalletpresent"> Get Previous Wallet </button>
+                <button class="colorbutton" item-right ion-button (click)="testRecoveredWallet()" [disabled]="recoveredaddress ==''"> Test recovery data </button>
+                <button class="colorbutton" item-right ion-button (click)="confirmWalletChange()" [disabled]="recoveredaddress ==''"> Confirm wallet change </button>
+                <button class="colorbutton" item-right ion-button (click)="confirmWalletChange()" [disabled]="!prevwalletpresent"> Get previous wallet </button>
             </ion-card>
 
     </ion-list>
