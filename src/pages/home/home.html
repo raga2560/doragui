@@ -51,8 +51,19 @@
 
             <ion-card text-center >
                 <ion-input   type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
-                <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste Address</button>
-                <button item-right ion-button small (click)="send()" class="colorbutton">Send</button>
+                <button  ion-button small (click)="pastestring()" class="colorbutton">Paste address</button>
+            </ion-card>
+            <ion-card text-center >
+                <ion-input   type="text" [(ngModel)]="serverless.sendamount" placeholder="Enter amount to send "></ion-input>
+                <button ion-button small (click)="directSend()" class="colorbutton">Send</button>
+            </ion-card>
+            <ion-card text-center *ngIf="serverless.sendtxid != ''">
+                <ion-label>
+            Sent transaction ID: {{serverless.sendtxid}}
+                </ion-label>
+                <ion-label>
+            Sent amount : {{serverless.sendamount}}
+                </ion-label>
             </ion-card>
             <ion-card text-center>
                 <ion-card-title padding >
@@ -100,8 +111,8 @@
             </ion-item-divider>
 
             <div *ngIf="sentTransactions != ''">
-                <div *ngFor="let todo of sentTransactions; let i = index">
-                    <ion-card *ngIf="i<2" text-center>
+                <div *ngFor="let todo of sentTransactions.reverse(); let i = index">
+                    <ion-card *ngIf="i<3" text-center>
                         <ion-label text-wrap>Tx: {{todo.paymenttxid}}
                             <h3>Amount: {{todo.paymentvalue}} </h3>
                             <h3>To: {{todo.paymentaddress}} </h3>
@@ -119,9 +130,9 @@
                  Latest 3 received transactions 
             </ion-item-divider>
             <div *ngIf="receivedTransactions != ''">
-                <div *ngFor="let todo of receivedTransactions; let i = index">
+                <div *ngFor="let todo of receivedTransactions.reverse(); let i = index">
 
-                    <ion-card *ngIf="i<2" text-center>
+                    <ion-card *ngIf="i<3" text-center>
                         <ion-label text-wrap>Tx: {{todo.paymenttxid}}
                             <h3>From: {{todo.paymentaddress}} </h3>
                             <h3>Total: {{todo.paymentvalue}} </h3>
@@ -163,8 +174,16 @@
 
             <ion-card text-center>
                 <ion-input type="text" [(ngModel)]="sendaddress" placeholder="Enter address to send "></ion-input>
-                <button item-right ion-button small (click)="pastestring()" class="colorbutton">Paste address</button>
-                <button item-right ion-button small (click)="send()" class="colorbutton">Send</button>
+                <button  ion-button small (click)="pastestring()" class="colorbutton">Paste address</button>
+                <button  ion-button small (click)="directSend()" class="colorbutton">Send</button>
+            </ion-card>
+            <ion-card text-center *ngIf="serverless.sendtxid != ''">
+                <ion-label>
+            Sent transaction ID: {{serverless.sendtxid}}
+                </ion-label>
+                <ion-label>
+            Sent amount : {{serverless.sendamount}}
+                </ion-label>
             </ion-card>
             <ion-card  text-center>>
                 <ion-card-title padding>
@@ -212,9 +231,9 @@
             </ion-item-divider>
 
             <div *ngIf="sentTransactions != ''">
-                <div *ngFor="let todo of sentTransactions; let i = index">
+                <div *ngFor="let todo of sentTransactions.reverse(); let i = index">
 
-                    <ion-card *ngIf="i<2" text-center>
+                    <ion-card *ngIf="i<3" text-center>
                         <ion-label text-wrap>Tx: {{todo.paymenttxid}}
                             <h3>Amount: {{todo.paymentvalue}} </h3>
                             <h3>To: {{todo.paymentaddress}} </h3>
@@ -232,9 +251,9 @@
                 Latest 3 received transactions
             </ion-item-divider>
             <div *ngIf="receivedTransactions != ''">
-                <div *ngFor="let todo of receivedTransactions; let i = index">
+                <div *ngFor="let todo of receivedTransactions.reverse(); let i = index">
 
-                    <ion-card *ngIf="i<2" text-center>
+                    <ion-card *ngIf="i<3" text-center>
                         <ion-label text-wrap>Tx: {{todo.paymenttxid}}
                             <h3>From: {{todo.paymentaddress}} </h3>
                             <h3>Total: {{todo.paymentvalue}} </h3>

@@ -1,17 +1,23 @@
 import { Component  , ViewChild} from "@angular/core";
-import { NavController, ModalController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController,Platform, ModalController, AlertController, LoadingController } from 'ionic-angular';
 import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login-page/login-page';
 import { ServerlessSendviewPage } from '../serverless-sendview/serverless-sendview';
 import { ServerlessReceiveviewPage } from '../serverless-receiveview/serverless-receiveview';
 import { ServerlessPayment } from '../../providers/serverlesspayment';
 import { ServerlessWallet } from '../../providers/serverlesswallet';
+import { RegularEngine } from '../../providers/regularengine';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {QRCodeComponent} from 'angular2-qrcode';
 import { Bitcoin } from '../../providers/bitcoin';
 import { Clipboard } from '@ionic-native/clipboard';
 
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { environment } from '../../config/environment';
+  
+let url = environment.url;
+let bitcoinMinimumSend = environment.bitcoinMinimumSend;
+let bitcoinMinimumReceive = environment.bitcoinMinimumReceive;
 
 
 
@@ -27,12 +33,21 @@ export class HomePage {
   refreshEnable : any;
   sentTransactions: any;
   scanSub : any;
+ serverless: any;
+  sendingset: any;
+   errordata: any;
+
+  pause6min : any;
+
   sendaddress= '';
   walletbalance: any;
   sendqrcode= '';
+  paymentdata: any;
+
   wallet: any;
   receiveqrcode= '';
   addresstoreceive='';
+  amounttosend=0;
   receivedTransactions: any; 
  @ViewChild(QRCodeComponent) qrcode: QRCodeComponent;
 
@@ -40,23 +55,58 @@ export class HomePage {
   constructor(public navCtrl: NavController,  public modalCtrl: ModalController, 
     public paymentService: ServerlessPayment,
   // public serverlessService: Serverless,
+    public walletService: ServerlessWallet,
+    public plt: Platform,
     public serverlessWallet: ServerlessWallet,
+    public serverlessRegular: RegularEngine,
     private clipboard: Clipboard,
     public socialSharing: SocialSharing,
-
+    
     public bitcoinService: Bitcoin,
-    public walletService: ServerlessWallet,
      private qrScanner: QRScanner,
     public alertCtrl: AlertController, public authService: Auth, public loadingCtrl: LoadingController) {
 
   this.refreshEnable = true;
   this.sentTransactions = '';
   this.receivedTransactions = '';
+   this.serverless = {
+            sendamount: '',
+            sendpincode: '',
+            sendqrcode: '',
+            sendstring: '',
+            sendtxid: '',
+            sendaddress: ''
+       };
+  this.pause6min = false;
+
+
   this.walletbalance = {
             address: '',
             balance: '',
             unconfirmed_balance: ''
+     };
+   this.errordata = {
+        preparingmessage: ''
+      };
+
+      this.sendingset = {
+      address: '',
+      uidkey: '',
+      moneydata: ''
+      };
+
+ this.paymentdata = {
+            paymentid: '',
+            paymenttxid: '',
+            paymentaddress: '',
+            payeename: '',
+            paymentconfirmation: 0,
+            payeephone: '',
+            paymentvalue: '',
+            paymentpin: ''
+
        };
+
   this.walletService.initializeBitcoinWallet().then(a=>{
 
   this.wallet = this.serverlessWallet.getBitcoinWallet();
@@ -146,6 +196,89 @@ export class HomePage {
     this.navCtrl.push('ServerlessReceiveviewPage', {payment: payment});
 
   }
+ 
+  scanqrcode()
+  {
+	alert("Not yet implemented");
+  }
+
+  directSend(){
+
+    if(this.pause6min == true)
+    {
+        alert("Wait 6 min to complete earlier transaction" );
+        return ;
+    }
+    if(this.serverless.sendamount == '')
+    {
+        alert("Enter amount to send " );
+        return ;
+
+    }
+    if(this.serverless.sendamount > this.walletbalance.balance)
+    {
+        alert("No sufficient balance in wallet="+this.walletbalance.address);
+        return ;
+    }
+    if(this.serverless.sendamount < bitcoinMinimumSend )
+    {
+        alert("Minimum amount to send = "+bitcoinMinimumSend );
+        return ;
+    }
+
+    this.sendingset = this.serverlessRegular.getSendingSet(this.sendaddress);
+    //alert(JSON.stringify(this.sendingset));
+    this.showLoader();
+    this.serverless.sendpincode = this.sendingset.moneydata.randompin;
+    this.serverless.sendaddress = this.sendingset.address;
+
+    var removedpinset = this.sendingset;
+    removedpinset.moneydata.randompin = '';
+   
+    this.serverless.sendstring = "REGULAR_SEND";
+    this.serverless.sendqrcode = this.serverless.sendstring ;
+
+    this.serverlessRegular.sendBitcoin(this.serverless.sendamount, this.sendingset).then ((result:any) => {
+
+      this.loading.dismiss();
+      var result1 = result;
+      this.serverless.sendtxid = result1.tx.hash;
+
+       this.paymentdata = {
+            paymentid: '',
+            paymenttxid: this.serverless.sendtxid,
+            paymentaddress: this.serverless.sendaddress,
+            payeename: '',
+            payeephone: '',
+            paymentstring: this.serverless.sendstring,
+            paymentpin: this.serverless.sendpincode,
+            paymentconfirmation: 0,
+            paymentvalue: this.serverless.sendamount
+      };
+
+      this.paymentService.createPaymentMade(this.paymentdata);
+      this.pausetransaction();
+//      this.serverlessTransaction.updateTransactions(this.serverless.senttxid);
+
+    }, (err) => {
+      this.loading.dismiss();
+      if(typeof err === 'object') this.errordata.preparingmessage = JSON.stringify(err)
+      else this.errordata.preparingmessage = err;
+     console.log("err="+ err);
+
+ });
+
+
+  }
+
+   pausetransaction () {
+  this.pause6min = true;
+
+   setTimeout(()=>{    //<<<---    using ()=> syntax
+     this.pause6min = false;
+    }, 30000);
+
+   }
 
 
 
@@ -178,7 +311,7 @@ export class HomePage {
   showLoader(){
 
     this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
+      content: 'Processing...'
     });
 
     this.loading.present();
@@ -191,12 +324,27 @@ export class HomePage {
     this.navCtrl.setRoot(LoginPage);
 
   }
-  send () {
+
+  pastestring ()
+  {
+   if (this.plt.is('cordova')) {
+
+     this.clipboard.paste().then(
+   (resolve: string) => {
+      this.sendaddress = resolve;
+      //alert(resolve);
+    },
+    (reject: string) => {
+      alert('Error: ' + reject);
+    }
+  );
+   }
+   else {
+	alert("Feature not supported");
+   }
 
   }
-  pastestring() {
 
-  }
  
   refresh() {
   this.refreshEnable = false;

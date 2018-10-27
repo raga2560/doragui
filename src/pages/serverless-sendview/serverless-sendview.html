@@ -29,7 +29,7 @@
 
         <ion-card text-center>
             <ion-label  text-wrap> Address of payment :{{paymentdata.paymentaddress}} </ion-label> 
-            <button item-right ion-button small class="colorbutton" (click)="revertPayment()">Revert payment </button>
+            <button *ngIf="paymentdata.paymentstring != 'REGULAR_SEND'" item-right ion-button small class="colorbutton" (click)="revertPayment()">Revert payment </button>
         </ion-card>
         <ion-card text-center>
             <ion-label text-wrap> Sent transaction-id : {{paymentdata.paymenttxid}} </ion-label> 

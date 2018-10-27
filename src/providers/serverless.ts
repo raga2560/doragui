@@ -40,6 +40,24 @@ export class Serverless {
   getactivatingpair() {
 
   var network = foo.bitcoin.networks.testnet;
+ this.serverlessWallet.initializeBitcoinWallet().then(a=>{
+
+
+  var wk = this.serverlessWallet.getBitcoinWallet();
+
+     console.log("wk="+JSON.stringify(wk));
+     console.log("wkwallletwif="+wk.walletwif);
+     var localkeypair = foo.bitcoin.ECPair.fromWIF(wk.walletwif, network);
+  this.activatingkeypair = localkeypair;
+
+
+  });
+  }
+
+
+  getactivatingpair_toremove() {
+
+  var network = foo.bitcoin.networks.testnet;
   var wk = this.serverlessWallet.getBitcoinWallet();
 
      console.log("wk="+JSON.stringify(wk));   

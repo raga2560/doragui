@@ -49,12 +49,19 @@ export class RegularEngine {
   getactivatingpair() {
 
   var network = foo.bitcoin.networks.testnet;
+  this.serverlessWallet.initializeBitcoinWallet().then(a=>{
+
+
   var wk = this.serverlessWallet.getBitcoinWallet();
 
      console.log("wk="+JSON.stringify(wk));   
      console.log("wkwallletwif="+wk.walletwif);   
      var localkeypair = foo.bitcoin.ECPair.fromWIF(wk.walletwif, network);
   this.activatingkeypair = localkeypair;
+
+
+  });
+
 
  
   }
@@ -69,7 +76,7 @@ export class RegularEngine {
 
   }
 
-  getSendingSet()
+  getSendingSet(addrtosend:string)
   {
   
   // size of key is taken as input, optional  
@@ -80,21 +87,21 @@ export class RegularEngine {
    vendorid: 1,
    expiry: 1,
    createdate: 1,
-   randompin: "PIN_"+Math.random().toString(36).substr(2, length).toUpperCase()
+   randompin: "PIN_NOT_APPLICABLE".toUpperCase()
   };
 
   var keyPair = foo.bitcoin.ECPair.makeRandom();
   var uidkey =  keyPair.getPublicKeyBuffer();
   var globalnetwork = foo.bitcoin.networks.testnet;
 
-
+/*
    var docaddr = foo.bitcoincontrol.serverlesslib.doc1Upload(moneydata,
                 uidkey,
                 globalnetwork);
    console.log("docaddr = "+docaddr);
-
+*/
    var set = {
-      address: docaddr,
+      address: addrtosend,
       uidkey: uidkey.toString('hex'),
       moneydata: moneydata
    };

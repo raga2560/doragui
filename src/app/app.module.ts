@@ -25,6 +25,7 @@ import { SignupPage } from '../pages/signup-page/signup-page';
 import { Auth } from '../providers/auth';
 import { Bitcoin } from '../providers/bitcoin';
 import { Popservice } from '../providers/popservice';
+import { RegularEngine } from '../providers/regularengine';
 import { Serverless } from '../providers/serverless';
 import { ServerlessWallet } from '../providers/serverlesswallet';
 import { ServerlessTransaction } from '../providers/serverlesstransaction';
@@ -91,6 +92,7 @@ IonicStorageModule.forRoot({
     ServerlessTransaction, 
     ServerlessWallet, 
     Popservice, 
+    RegularEngine, 
     SocialSharing,
     Clipboard,
     EmailComposer,
