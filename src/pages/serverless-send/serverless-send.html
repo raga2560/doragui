@@ -45,7 +45,7 @@
 
         <ion-card text-center>
             <ion-card-title padding >
-                Pay as QR-code
+                 Message QR-code
             </ion-card-title>
             <ion-card-content text-center *ngIf="serverless.sendqrcode != ''">
                 <qr-code id="qrcode" [value]="serverless.sendqrcode" [canvas]="true"></qr-code>
@@ -53,7 +53,7 @@
             <!-- Sharing Icons -->
             <ion-grid>
                 <ion-row>
-                    <ion-col>
+                    <ion-col *ngIf="serverless.sendqrcode != ''">
                       <button ion-button icon-only (click)="regularShare()" color="primary" clear>
                     <ion-icon class="share-icon" name="share"></ion-icon>
                   </button>
@@ -83,7 +83,7 @@
         </ion-card>
         <ion-card text-center>
             <ion-card-title padding >
-                Pay as Message
+                Message string
             </ion-card-title>
             <ion-card-content text-center>
                 <p>
@@ -130,7 +130,7 @@
 
         <ion-card text-center>
             <ion-card-title padding >
-                PIN for Receiver
+                PIN for Message
             </ion-card-title>
             <ion-card-content text-center>
                 {{serverless.sendpincode}}
