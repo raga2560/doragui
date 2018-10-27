@@ -25,6 +25,7 @@
         <ion-card text-center>
             <ion-label text-wrap>
                 <h2> Wallet balance: {{walletbalance.balance}} </h2>
+                <h3> Unconfirmed balance: {{walletbalance.unconfirmed_balance}} </h3>
 
             </ion-label>
         </ion-card>
@@ -47,7 +48,7 @@
             <ion-card-title padding >
                  Message QR-code
             </ion-card-title>
-            <ion-card-content text-center *ngIf="serverless.sendqrcode != ''">
+            <ion-card-content text-center *ngIf="serverless.sendtxid   != ''">
                 <qr-code id="qrcode" [value]="serverless.sendqrcode" [canvas]="true"></qr-code>
             </ion-card-content>
             <!-- Sharing Icons -->
@@ -85,7 +86,7 @@
             <ion-card-title padding >
                 Message string
             </ion-card-title>
-            <ion-card-content text-center>
+            <ion-card-content text-center *ngIf="serverless.sendtxid != ''">
                 <p>
                     {{serverless.sendstring}}
                 </p>
@@ -132,7 +133,7 @@
             <ion-card-title padding >
                 PIN for Message
             </ion-card-title>
-            <ion-card-content text-center>
+            <ion-card-content text-center *ngIf="serverless.sendtxid != ''">
                 {{serverless.sendpincode}}
             </ion-card-content>
             <ion-grid>

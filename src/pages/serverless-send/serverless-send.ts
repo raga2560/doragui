@@ -214,6 +214,10 @@ let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
 
       this.loading.dismiss();
       this.walletbalance = result;
+      if(this.walletbalance.unconfirmed_balance != 0)
+      this.pause6min = true;
+      else 
+      this.pause6min = false;
 
 
     }, (err) => {
@@ -251,6 +255,14 @@ let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
   
   prepareToSend(){
     
+    if(this.walletbalance.unconfirmed_balance !=  0)
+    {
+        alert("Wait for unconfirmed transaction to finish " );
+        this.getWalletBalance();
+      
+        return;
+    }
+
     if(this.pause6min == true)
     {
         alert("Wait 6 min to complete earlier transaction" );
@@ -304,14 +316,38 @@ let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
       };
 
       this.paymentService.createPaymentMade(this.paymentdata);
-      this.pausetransaction(); 
+      this.getWalletBalance();
 //      this.serverlessTransaction.updateTransactions(this.serverless.senttxid);
 
     }, (err) => {
       this.loading.dismiss();
-      if(typeof err === 'object') this.errordata.preparingmessage = JSON.stringify(err)
-      else this.errordata.preparingmessage = err;
-     console.log("err="+ err);
+      if(typeof err === 'object')  {
+      
+              if(Object.is(err, {})) {
+                this.errordata.preparingmessage = "Waiting for 6 confirmations of previous spending";
+
+              }
+              else {
+		this.errordata.preparingmessage = JSON.stringify(err)
+              }
+      }
+      else {
+              if(err == '{}') {
+                this.errordata.preparingmessage = "Waiting for 6 confirmations of previous spending";
+
+              }
+              else {
+                this.errordata.preparingmessage = err;
+              }
+      }
+     if(err == 'Error: Transaction has no inputs')
+     {
+       this.errordata.preparingmessage = "Waiting for 6 confirmations of previous spending";
+     }
+     else {
+       this.errordata.preparingmessage = err;
+       console.log("err="+ err);
+     }
     });
  
 
