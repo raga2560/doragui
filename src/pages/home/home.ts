@@ -86,7 +86,7 @@ export class HomePage {
             unconfirmed_balance: ''
      };
    this.errordata = {
-        preparingmessage: ''
+        message: ''
       };
 
       this.sendingset = {
@@ -262,7 +262,7 @@ export class HomePage {
 
     }, (err) => {
       this.loading.dismiss();
-      if(typeof err === 'object') this.errordata.preparingmessage = JSON.stringify(err)
+      if(typeof err === 'object') this.errordata.message = err.reason;
       else this.errordata.preparingmessage = err;
      console.log("err="+ err);
 

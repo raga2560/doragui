@@ -337,7 +337,7 @@ let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
 
               }
               else {
-                this.errordata.preparingmessage = err;
+                this.errordata.preparingmessage = err.reason;
               }
       }
      if(err == 'Error: Transaction has no inputs')
@@ -345,7 +345,7 @@ let img64: string  = html.substr(0, html.length - 2).split('base64,')[1];
        this.errordata.preparingmessage = "Waiting for 6 confirmations of previous spending";
      }
      else {
-       this.errordata.preparingmessage = err;
+       this.errordata.preparingmessage = err.reason;
        console.log("err="+ err);
      }
     });

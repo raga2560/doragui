@@ -57,6 +57,11 @@
                 <ion-input   type="text" [(ngModel)]="serverless.sendamount" placeholder="Enter amount to send "></ion-input>
                 <button ion-button small (click)="directSend()" class="colorbutton">Send</button>
             </ion-card>
+ <ion-item text-wrap *ngIf="errordata.message != ''" color="danger">
+            {{errordata.message}}
+        </ion-item>
+
+
             <ion-card text-center *ngIf="serverless.sendtxid != ''">
                 <ion-label>
             Sent transaction ID: {{serverless.sendtxid}}
@@ -177,6 +182,9 @@
                 <button  ion-button small (click)="pastestring()" class="colorbutton">Paste address</button>
                 <button  ion-button small (click)="directSend()" class="colorbutton">Send</button>
             </ion-card>
+ <ion-item text-wrap *ngIf="errordata.message != ''" color="danger">
+            {{errordata.message}}
+        </ion-item>
             <ion-card text-center *ngIf="serverless.sendtxid != ''">
                 <ion-label>
             Sent transaction ID: {{serverless.sendtxid}}
