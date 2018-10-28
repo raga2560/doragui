@@ -1,1 +1,1 @@
-/home/ramesh/workspace8/browser/app.js
+/home/ramesh/workspace8/dorabrowser/app.js
