@@ -120,14 +120,20 @@ export class Serverless {
     return new Promise((resolve, reject) => { 
 
     var txpromise = foo.bitcoincontrol.serverlesslib.regularSendingFund(serverlesstype, amount, addressset.address, this.activatingkeypair); // -> popup for partner to send money, amount
-    txpromise.then(function(tx) {
+    txpromise.then(function(obj) {
+     var tx = obj.data;
      console.log(tx.toHex());
-     foo.bitcoincontrol.serverlesslib.sendtx(tx).then(function(tx1) {
+     foo.bitcoincontrol.serverlesslib.sendtx(tx).then(function(obj1) {
+     var tx1 = obj1.data;
      console.log("sending=", JSON.stringify(tx1));
      var txparse = JSON.parse(tx1 );
+     resolve(txparse);
+    /*
      if(typeof txparse.tx === 'undefined') reject(txparse)
      else if(txparse.error) reject(txparse)
      else resolve(txparse);
+    */
+
     }).catch (function(error){
      console.log(error);
      reject (error);
@@ -146,15 +152,20 @@ export class Serverless {
   {
     return new Promise((resolve, reject) => { 
      var txpromise = foo.bitcoincontrol.serverlesslib.compReceive1toManyFund(creatorstub, uidkey, address);
-     txpromise.then(function(tx) {
+     txpromise.then(function(obj) {
+      var tx = obj.data;
       if(tx != 0) {
         console.log(tx.toHex());
-         foo.bitcoincontrol.serverlesslib.sendtx(tx).then(function(tx1) {
+         foo.bitcoincontrol.serverlesslib.sendtx(tx).then(function(obj) {
+         var tx1 = obj.data;
          console.log("sending=", JSON.stringify(tx1));
          var txparse = JSON.parse(tx1 );
+         resolve(txparse);
+/*
          if(typeof txparse.tx === 'undefined') reject(txparse)
          else if(txparse.error) reject(txparse)
          else resolve(txparse);
+     */
         }).catch (function(error){
          console.log(error);
          reject (error);
