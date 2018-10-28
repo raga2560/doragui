@@ -126,7 +126,7 @@ export class Serverless {
      foo.bitcoincontrol.serverlesslib.sendtx(tx).then(function(obj1) {
      var tx1 = obj1.data;
      console.log("sending=", JSON.stringify(tx1));
-     var txparse = JSON.parse(tx1 );
+     var txparse = tx1 ; //JSON.parse(tx1 );
      resolve(txparse);
     /*
      if(typeof txparse.tx === 'undefined') reject(txparse)
@@ -159,7 +159,7 @@ export class Serverless {
          foo.bitcoincontrol.serverlesslib.sendtx(tx).then(function(obj) {
          var tx1 = obj.data;
          console.log("sending=", JSON.stringify(tx1));
-         var txparse = JSON.parse(tx1 );
+         var txparse = tx1; // JSON.parse(tx1 );
          resolve(txparse);
 /*
          if(typeof txparse.tx === 'undefined') reject(txparse)

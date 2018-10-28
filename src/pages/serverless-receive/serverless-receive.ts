@@ -240,8 +240,8 @@ var s = p.toString();
  
      }, (err) => {
        this.loading.dismiss();
-       if(typeof err === 'object') this.errordata.receivedmessage = JSON.stringify(err)
-       else this.errordata.receivedmessage = err;
+       if(typeof err === 'object') this.errordata.receivedmessage = err.reason;
+       else this.errordata.receivedmessage = err.reason;
       console.log("err="+ err);
      });
 
