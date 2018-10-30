@@ -17,6 +17,9 @@ import { HomePageModule } from '../pages/home/home.module';
 import { ServerlessWalletPageModule } from '../pages/serverless-wallet/serverlesswallet.module';
 import { SetupRecoveryPageModule } from '../pages/setup-recovery/setuprecovery.module';
 import { RecoverWalletPageModule } from '../pages/recover-wallet/recoverwallet.module';
+import {PaymentsmadePageModule} from '../pages/paymentsmade/paymentsmade.module';
+import {PaymentsreceivedPageModule} from '../pages/paymentsreceived/paymentsreceived.module';
+
 
 import { IonicStorageModule } from '@ionic/storage';
 import { LoginPage } from '../pages/login-page/login-page';
@@ -60,6 +63,8 @@ import { SerlessettingPageModule } from '../pages/serverless-setting/serlessetti
     RecoverWalletPageModule,
     SerlessettingPageModule,
     ServerlessSendPageModule,
+    PaymentsmadePageModule,
+    PaymentsreceivedPageModule,
     ServerlessSendviewPageModule,
     ServerlessReceiveviewPageModule,
     ServerlessReceivePageModule,

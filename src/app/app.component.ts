@@ -8,6 +8,8 @@ import {HomePage} from '../pages/home/home';
 import {SerlessettingPage} from '../pages/serverless-setting/serlessetting';
 import {ServerlessWalletPage} from '../pages/serverless-wallet/serverlesswallet';
 import {RecoverWalletPage} from '../pages/recover-wallet/recoverwallet';
+import {PaymentsmadePage} from '../pages/paymentsmade/paymentsmade';
+import {PaymentsreceivedPage} from '../pages/paymentsreceived/paymentsreceived';
 import {SetupRecoveryPage} from '../pages/setup-recovery/setuprecovery';
 import {ServerlessSendPage} from '../pages/serverless-send/serverless-send';
 import {ServerlessReceivePage} from '../pages/serverless-receive/serverless-receive';
@@ -47,6 +49,9 @@ export class MyApp
 
             {title: 'Pay as Message', component: ServerlessSendPage, icon: 'return-right'},
             {title: 'Receive Payment ', component: ServerlessReceivePage, icon: 'return-left'},
+            {title: 'Divider', component: '', icon: 'none'},
+            {title: 'Payments Made ', component: PaymentsmadePage, icon: 'arrow-dropright-circle'},
+            {title: 'Payments Received', component: PaymentsreceivedPage, icon: 'arrow-dropleft-circle'},
             {title: 'Divider', component: '', icon: 'none'},
             {title: 'External Setting', component: SerlessettingPage, icon: 'settings'}
         ];
